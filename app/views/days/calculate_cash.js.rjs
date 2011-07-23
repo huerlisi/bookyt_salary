@@ -1,0 +1,1 @@
+page['#cash'].append(@cash)
