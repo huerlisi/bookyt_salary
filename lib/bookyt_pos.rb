@@ -1,2 +1,1 @@
-module BookytPos
-end
+require 'bookyt_pos/railtie' if defined?(::Rails::Railtie)
