@@ -1,0 +1,25 @@
+de:
+  activerecord:
+    models:
+      day: Tagesabschluss
+
+    attributes:
+      day:
+        date:            Datum
+        cash:            Bargeldumsatz
+        card_turnover:   Kreditkartenumsatz
+        expenses:        Barausgabe
+        gross_turnover:  Bruttoumsatz
+        net_turnover:    Nettoumsatz
+        client_count:    Anzahl Verkäufe
+        product_count:   Verkaufte Produkte
+        credit_turnover: Kreditumsatz
+        discount:        Rabatt
+        from:            Abrechnung von
+        total:           Total
+        calculate:       Ausrechnen
+
+  crud:
+    title:
+      day:
+        new: Abrechnung von %{day}
