@@ -6,7 +6,7 @@ gemspec
 
 # Rails
 # =====
-gem 'rails', '~> 3.0.9'
+gem 'rails', '~> 3.1.0.rc'
 
 # Development
 # ===========
