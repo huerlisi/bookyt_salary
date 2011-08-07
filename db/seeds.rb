@@ -1,5 +1,8 @@
 # Salaries
 # ========
+outside_capital = AccountType.find_by_code('outside_capital')
+costs           = AccountType.find_by_code('costs')
+
 # Accounts
 Account.create!([
   {:code => "2020", :title => "Kreditoren Sozialversicherungen", :account_type => outside_capital},
