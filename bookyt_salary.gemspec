@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.summary      = "Salary plugin for bookyt"
   s.description  = "This plugin extends bookyt with Salary functionality."
 
-  s.files        = `git ls-files app lib config`.split("\n")
+  s.files        = `git ls-files app lib config db`.split("\n")
   s.platform     = Gem::Platform::RUBY
   s.require_path = 'lib'
 end
