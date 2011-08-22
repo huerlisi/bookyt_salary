@@ -1,23 +1,16 @@
 de:
   activerecord:
     models:
-      day: Tagesabschluss
+      salary: Lohn
 
     attributes:
-      day:
-        date:            Datum
-        cash:            Bargeldumsatz
-        card_turnover:   Kreditkartenumsatz
-        expenses:        Barausgabe
-        gross_turnover:  Bruttoumsatz
-        net_turnover:    Nettoumsatz
-        client_count:    Anzahl Verkäufe
-        product_count:   Verkaufte Produkte
-        credit_turnover: Kreditumsatz
-        discount:        Rabatt
-        from:            Abrechnung von
-        total:           Total
-        calculate:       Ausrechnen
+      salary:
+        amount:        Bruttolohn
+        net_amount:    Nettolohn
+        bvg_amount:    BVG
+        social_amount: AHV/IV/EO/ALV/NBU
+        customer:      Arbeitgeber
+        company:       Arbeitnehmer
 
   crud:
     title:
