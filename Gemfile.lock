@@ -1,12 +1,12 @@
 PATH
   remote: .
   specs:
-    bookyt_pos (0.0.2)
+    bookyt_salary (0.2.0)
 
 GEM
   remote: http://rubygems.org/
   specs:
-    ZenTest (4.6.0)
+    ZenTest (4.5.0)
     accept_values_for (0.4.3)
       activemodel (>= 3.0.0)
       rspec
@@ -140,10 +140,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  ZenTest (< 4.6.0)
   accept_values_for
   autotest
   autotest-rails
-  bookyt_pos!
+  bookyt_salary!
   capybara
   factory_girl_rails (~> 1.1)
   rails (~> 3.1.0.rc)
