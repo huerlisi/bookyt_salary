@@ -1,4 +1,7 @@
 class SalariesController < AuthorizedController
+  
+  respond_to :html, :pdf
+  
   # Filter/Search
   # =============
   has_scope :by_state
@@ -39,6 +42,8 @@ class SalariesController < AuthorizedController
   end
 
   def payslip
-    show!
+    show! do |format|
+      format.html { redirect_to :action => :show }
+    end
   end
 end
