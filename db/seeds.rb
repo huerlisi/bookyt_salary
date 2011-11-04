@@ -1,7 +1,7 @@
 # Salaries
 # ========
-outside_capital = AccountType.find_by_code('outside_capital')
-costs           = AccountType.find_by_code('costs')
+outside_capital = AccountType.find_by_name('outside_capital')
+costs           = AccountType.find_by_name('costs')
 
 # Accounts
 Account.create!([
