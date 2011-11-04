@@ -1,6 +1,6 @@
 .contextual
   = icon_link_to :pdf, :format => :pdf
-  = icon_link_to(:payslip, {:action => :payslip, :format => :pdf, :target => '_blank'})
+  = icon_link_to(:payslip, {:action => :payslip, :format => :pdf}, :target => '_blank')
   = contextual_links_for
 
 %h1= resource.title
