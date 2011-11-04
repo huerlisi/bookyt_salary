@@ -1,4 +1,4 @@
-prawn_document(:page_size => 'A4',  :top_margin => 60, :left_margin => 50, :right_margin => 55, :renderer => Prawn::LetterDocument) do |pdf|
+prawn_document(:renderer => Prawn::LetterDocument) do |pdf|
   employer = resource.employer
   employee = resource.employee
   direct_account = Account.find_by_code("5000")
