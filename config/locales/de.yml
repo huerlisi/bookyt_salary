@@ -9,8 +9,8 @@ de:
         net_amount:    Nettolohn
         bvg_amount:    BVG
         social_amount: AHV/IV/EO/ALV/NBU
-        customer:      Arbeitgeber
-        company:       Arbeitnehmer
+        employer:      Arbeitgeber
+        employee:      Arbeitnehmer
 
   crud:
     title:
