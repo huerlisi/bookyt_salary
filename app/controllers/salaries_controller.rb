@@ -1,4 +1,4 @@
-class SalariesController < AuthorizedController
+class SalariesController < InvoicesController
   
   respond_to :html, :pdf
   
