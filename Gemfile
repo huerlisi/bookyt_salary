@@ -6,7 +6,7 @@ gemspec
 
 # Rails
 # =====
-gem 'rails', '~> 3.1.0.rc'
+gem 'rails', '~> 3.1.0'
 
 # Development
 # ===========
@@ -23,7 +23,7 @@ group :test do
   gem "capybara"
 
   # Fixtures
-  gem "factory_girl_rails", "~>1.1"
+  gem "factory_girl_rails"
 
   # Matchers/Helpers
   gem 'shoulda'
