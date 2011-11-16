@@ -36,11 +36,6 @@ class SalariesController < InvoicesController
     @salary.amount = employment.salary_amount
 
     # Line Items
-    line_item = @salary.line_items.build(
-      :times            => 1,
-      :quantity         => 'x',
-      :booking_template => BookingTemplate.find_by_code('salary:employee:ahv_iv_eo')
-    )
 
     # Prebuild an empty attachment instance
     @salary.attachments.build
