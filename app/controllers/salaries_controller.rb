@@ -1,5 +1,4 @@
 class SalariesController < InvoicesController
-  
   respond_to :html, :pdf
   
   # Filter/Search
