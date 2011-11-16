@@ -13,7 +13,7 @@ class SalariesController < InvoicesController
     index!
   end
 
-  def new
+  def select_employee
     # Allow pre-seeding some parameters
     salary_params = {
       :customer_id    => current_tenant.company.id,
@@ -26,6 +26,14 @@ class SalariesController < InvoicesController
     salary_params.merge!(params[:salary]) if params[:salary]
 
     @salary = Salary.new(salary_params)
+  end
+
+  def new
+    @salary = Salary.new(params[:salary])
+
+    employment = @salary.employee.employments.current
+
+    @salary.amount = employment.salary_amount
 
     # Line Items
     line_item = @salary.line_items.build(

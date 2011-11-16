@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   # Salaries
   resources :salaries do
     collection do
+      get :select_employee
       get :statistics
     end
 
