@@ -13,6 +13,13 @@ class Salary < Invoice
     company_id = value
   end
       
+  # States
+  # ======
+  STATES = ['booked', 'canceled', 'paid']
+  scope :by_state, lambda {|value|
+    where(:state => value) unless value == 'all'
+  }
+
   # String
   def to_s(format = :default)
     "%s (%s / %s - %s)" % [title, company, duration_from ? I18n::localize(duration_from) : '', duration_to ? I18n::localize(duration_to) : '']
