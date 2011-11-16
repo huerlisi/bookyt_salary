@@ -1,0 +1,10 @@
+%h2 Arbeitnehmer auswählen
+
+= semantic_form_for @salary
+  = f.semantic_errors
+
+  = f.inputs do
+    = f.input :emplyee, :as => :combobox
+
+  = f.buttons do
+    = f.commit_button

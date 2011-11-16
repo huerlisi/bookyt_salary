@@ -1,6 +1,6 @@
 class Salary < Invoice
   # Association customizing
-  belongs_to :employee, :foreign_key => :company_id, :class_name => 'Person'
+  belongs_to :employee, :foreign_key => :company_id, :class_name => 'Employee'
   belongs_to :employer, :foreign_key => :customer_id, :class_name => 'Person'
 
   validates :employee, :employer, :presence => true
