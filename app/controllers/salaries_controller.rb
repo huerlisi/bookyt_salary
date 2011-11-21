@@ -1,4 +1,6 @@
 class SalariesController < InvoicesController
+  defaults :resource_class => Salary
+
   respond_to :html, :pdf
   
   # Filter/Search
