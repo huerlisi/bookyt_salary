@@ -16,9 +16,6 @@ class Salary < Invoice
   # States
   # ======
   STATES = ['booked', 'canceled', 'paid']
-  scope :by_state, lambda {|value|
-    where(:state => value) unless value == 'all'
-  }
 
   # String
   def to_s(format = :default)
