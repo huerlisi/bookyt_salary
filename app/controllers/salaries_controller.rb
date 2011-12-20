@@ -35,10 +35,6 @@ class SalariesController < InvoicesController
 
     employment = @salary.employee.employments.current
 
-    @salary.amount = employment.salary_amount
-
-    # Line Items
-
     # Prebuild an empty attachment instance
     @salary.attachments.build
 
