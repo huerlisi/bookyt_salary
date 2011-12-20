@@ -19,9 +19,7 @@ class SalariesController < InvoicesController
     # Allow pre-seeding some parameters
     salary_params = {
       :employer_id    => current_tenant.company.id,
-      :state          => 'booked',
-      :duration_from  => Date.today,
-      :duration_to    => Date.today.in(30.days).to_date
+      :duration_from  => Date.today.beginning_of_month
     }
 
     # Set default parameters
@@ -33,6 +31,10 @@ class SalariesController < InvoicesController
   def new
     @salary = Salary.new(params[:salary])
 
+    # Deduced defaults
+    month_name = t('date.month_names')[@salary.duration_from.month]
+    @salary.title = "Lohn #{month_name} - #{@salary.employee.vcard.full_name}"
+    @salary.duration_to = @salary.duration_from.end_of_month
     employment = @salary.employee.employments.current
 
     # Prebuild an empty attachment instance
