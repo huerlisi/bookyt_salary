@@ -12,10 +12,9 @@ de:
         employer:      Arbeitgeber
         employee:      Arbeitnehmer
 
-  crud:
-    title:
-      day:
-        new: Abrechnung von %{day}
+  salaries:
+    select_employee:
+      title: Arbeitnehmer auswählen
 
   bookyt:
     main_navigation:
