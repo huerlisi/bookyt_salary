@@ -6,11 +6,17 @@ class Salary < Invoice
   validates :employee, :employer, :presence => true
 
   def employer_id=(value)
-    customer_id = value
+    self.customer_id = value
+  end
+  def employer_id
+    customer_id
   end
 
   def employee_id=(value)
-    company_id = value
+    self.company_id = value
+  end
+  def employee_id
+    company_id
   end
       
   # States
