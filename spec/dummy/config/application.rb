@@ -7,7 +7,7 @@ require "action_view/railtie"
 require "action_mailer/railtie"
 
 Bundler.require
-require "bookyt_pos"
+require "bookyt_salary"
 
 module Dummy
   class Application < Rails::Application
