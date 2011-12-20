@@ -18,7 +18,7 @@ class SalariesController < InvoicesController
   def select_employee
     # Allow pre-seeding some parameters
     salary_params = {
-      :customer_id    => current_tenant.company.id,
+      :employer_id    => current_tenant.company.id,
       :state          => 'booked',
       :duration_from  => Date.today,
       :duration_to    => Date.today.in(30.days).to_date
