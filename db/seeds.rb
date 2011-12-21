@@ -43,15 +43,15 @@ ChargeRate.create!([
 ])
 
 ChargeBookingTemplate.create!([
-  {:code => "salary:employee:ahv_iv_eo", :charge_rate_code => 'salary:both:ahv_iv_eo', :title => "AHV/IV/EO Arbeitnehmer", :debit_account => Account.find_by_code("2020"), :credit_account => Account.find_by_code("5000"), :amount_relates_to => 'reference_amount'},
+  {:code => "salary:employee:ahv_iv_eo", :charge_rate_code => 'salary:both:ahv_iv_eo', :title => "AHV/IV/EO Arbeitnehmer", :debit_account => Account.find_by_code("2020"), :credit_account => Account.find_by_code("2050"), :amount_relates_to => 'reference_amount'},
   {:code => "salary:employer:ahv_iv_eo", :charge_rate_code => 'salary:both:ahv_iv_eo', :title => "AHV/IV/EO Arbeitgeber", :debit_account => Account.find_by_code("2020"), :credit_account => Account.find_by_code("5700"), :amount_relates_to => 'reference_amount'},
 
-  {:code => "salary:employee:alv", :charge_rate_code => 'salary:both:alv', :title => "ALV Arbeitnehmer", :debit_account => Account.find_by_code("2020"), :credit_account => Account.find_by_code("5000"), :amount_relates_to => 'reference_amount'},
+  {:code => "salary:employee:alv", :charge_rate_code => 'salary:both:alv', :title => "ALV Arbeitnehmer", :debit_account => Account.find_by_code("2020"), :credit_account => Account.find_by_code("2050"), :amount_relates_to => 'reference_amount'},
   {:code => "salary:employer:alv", :charge_rate_code => 'salary:both:alv', :title => "ALV Arbeitgeber", :debit_account => Account.find_by_code("2020"), :credit_account => Account.find_by_code("5700"), :amount_relates_to => 'reference_amount'},
 
   {:code => "salary:employer:bu", :charge_rate_code => 'salary:employer:bu', :title => "BU Arbeitgeber", :debit_account => Account.find_by_code("2020"), :credit_account => Account.find_by_code("5700"), :amount_relates_to => 'reference_amount'},
 
-  {:code => "salary:employee:nbu", :charge_rate_code => 'salary:employee:nbu', :title => "NBU Arbeitnehmer", :debit_account => Account.find_by_code("2020"), :credit_account => Account.find_by_code("5000"), :amount_relates_to => 'reference_amount'},
+  {:code => "salary:employee:nbu", :charge_rate_code => 'salary:employee:nbu', :title => "NBU Arbeitnehmer", :debit_account => Account.find_by_code("2020"), :credit_account => Account.find_by_code("2050"), :amount_relates_to => 'reference_amount'},
   {:code => "salary:employer:nbu", :charge_rate_code => 'salary:employer:nbu', :title => "NBU Arbeitgeber", :debit_account => Account.find_by_code("2020"), :credit_account => Account.find_by_code("5700"), :amount_relates_to => 'reference_amount'},
 
   {:code => "salary:employer:fak", :charge_rate_code => 'salary:employer:fak', :title => "FAK Arbeitgeber", :debit_account => Account.find_by_code("2020"), :credit_account => Account.find_by_code("5700"), :amount_relates_to => 'reference_amount'},
