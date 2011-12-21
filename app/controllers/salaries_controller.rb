@@ -18,7 +18,6 @@ class SalariesController < InvoicesController
   def select_employee
     # Allow pre-seeding some parameters
     salary_params = {
-      :employer_id    => current_tenant.company.id,
       :duration_from  => Date.today.beginning_of_month
     }
 
@@ -30,12 +29,13 @@ class SalariesController < InvoicesController
 
   def new
     @salary = Salary.new(params[:salary])
+    @employee = @salary.employee
 
     # Deduced defaults
-    month_name = t('date.month_names')[@salary.duration_from.month]
-    @salary.title = "Lohn #{month_name} - #{@salary.employee.vcard.full_name}"
+    @salary.employer_id = current_tenant.company.id
+    month_name          = t('date.month_names')[@salary.duration_from.month]
+    @salary.title       = "Lohn #{month_name} - #{@salary.employee.vcard.full_name}"
     @salary.duration_to = @salary.duration_from.end_of_month
-    employment = @salary.employee.employments.current
 
     # Prebuild an empty attachment instance
     @salary.attachments.build
@@ -45,6 +45,11 @@ class SalariesController < InvoicesController
 
   def create
     @salary = Salary.new(params[:salary])
+    @salary.state = 'booked'
+
+    # Set @employee in case we redisplay the form partial
+    @employee = @salary.employee
+
     @salary.build_booking
 
     create!

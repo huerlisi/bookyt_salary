@@ -19,6 +19,10 @@ class Salary < Invoice
     company_id
   end
       
+  def employment
+    employee.employments.current
+  end
+
   # States
   # ======
   STATES = ['booked', 'canceled', 'paid']
@@ -77,27 +81,30 @@ class Salary < Invoice
     Account.find_by_code("5000")
   end
 
+  def amount
+    employment.salary_amount if employment
+  end
+
   # Build booking
   #
   # We need to ensure the order of creation as we depent on current balance.
   def build_booking(params = {}, template_code = nil)
     # Build and assign booking
-    super(params, 'salary:employee:ahv_iv_eo').save
-    super(params, 'salary:employer:ahv_iv_eo').save
-    super(params, 'salary:employee:alv').save
-    super(params, 'salary:employer:alv').save
-    super(params, 'salary:employee:nbu').save
-    super(params, 'salary:employer:nbu').save
-    super(params, 'salary:employer:bu').save
-    super(params, 'salary:employer:fak').save
-    super(params, 'salary:employer:vkb').save
+    super(params, 'salary:invoice')
+    super(params, 'salary:employee:ahv_iv_eo')
+    super(params, 'salary:employer:ahv_iv_eo')
+    super(params, 'salary:employee:alv')
+    super(params, 'salary:employer:alv')
+    super(params, 'salary:employee:nbu')
+    super(params, 'salary:employer:nbu')
+    super(params, 'salary:employer:bu')
+    super(params, 'salary:employer:fak')
+    super(params, 'salary:employer:vkb')
 
-    super(params, 'salary:employee:ktg').save
-    super(params.merge(:person_id => employee.id), "salary:bvg").save
+    super(params, 'salary:employee:ktg')
+    super(params.merge(:person_id => employee.id), "salary:bvg")
 
-    super(params, 'salary:invoice').save
-
-    super(params.merge(:person_id => employee.id), "salary:kz").save
-    super(params.merge(:person_id => employee.id), "salary:social:kz").save
+    super(params.merge(:person_id => employee.id), "salary:kz")
+    super(params.merge(:person_id => employee.id), "salary:social:kz")
   end
 end
