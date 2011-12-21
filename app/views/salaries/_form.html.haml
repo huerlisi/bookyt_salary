@@ -8,7 +8,8 @@
     = f.input :duration_to, :as => :date_field
     = f.input :remarks, :input_html => {:rows => 4}
 
-  = render 'employees/show_charge_rates'
+  - @booking_templates = BookingTemplate.by_type('salary')
+  = render 'booking_templates/list'
 
   = f.buttons do
     = f.commit_button
