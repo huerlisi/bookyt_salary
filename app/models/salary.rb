@@ -29,7 +29,12 @@ class Salary < Invoice
 
   # String
   def to_s(format = :default)
-    "%s (%s / %s - %s)" % [title, company, duration_from ? I18n::localize(duration_from) : '', duration_to ? I18n::localize(duration_to) : '']
+    case format
+    when :long
+      "%s (%s / %s - %s)" % [title, employee, duration_from ? I18n::localize(duration_from) : '', duration_to ? I18n::localize(duration_to) : '']
+    else
+      title
+    end
   end
 
   # Calculations
