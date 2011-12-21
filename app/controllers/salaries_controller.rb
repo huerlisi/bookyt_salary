@@ -34,7 +34,7 @@ class SalariesController < InvoicesController
     # Deduced defaults
     @salary.employer_id = current_tenant.company.id
     month_name          = t('date.month_names')[@salary.duration_from.month]
-    @salary.title       = "Lohn #{month_name} - #{@salary.employee.vcard.full_name}"
+    @salary.title       = "Lohn #{month_name} #{@salary.duration_from.year} - #{@salary.employee.vcard.full_name}"
     @salary.duration_to = @salary.duration_from.end_of_month
 
     # Prebuild an empty attachment instance
