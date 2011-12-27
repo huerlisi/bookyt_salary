@@ -31,6 +31,12 @@ class SalariesController < InvoicesController
     @salary = Salary.new(params[:salary])
     @employee = @salary.employee
 
+    unless @employee
+      @salary.valid?
+
+      render :action => 'select_employee' and return
+    end
+
     # Deduced defaults
     @salary.employer_id = current_tenant.company.id
     month_name          = t('date.month_names')[@salary.duration_from.month]
