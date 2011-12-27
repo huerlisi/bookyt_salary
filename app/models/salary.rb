@@ -80,12 +80,30 @@ class Salary < Invoice
   scope :by_value_period, lambda {|from, to| where("date(value_date) BETWEEN ? AND ?", from, to) }
   scope :by_employee_id, lambda {|value| where(:company_id => value)}
 
-  # Bookings
+  # Accounts
   # ========
   def self.direct_account
-    Account.find_by_code("5000")
+    Account.find_by_code("2050")
   end
 
+  def self.available_credit_accounts
+    Account.by_type(['costs', 'current_assets'])
+  end
+
+  def self.default_credit_account
+    Account.find_by_code('5000')
+  end
+
+  def self.available_debit_accounts
+    Account.by_type(['outside_capital'])
+  end
+
+  def self.default_debit_account
+    self.direct_account
+  end
+
+  # Bookings
+  # ========
   def amount
     employment.salary_amount if employment
   end
