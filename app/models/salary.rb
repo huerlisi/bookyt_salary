@@ -125,9 +125,9 @@ class Salary < Invoice
     super(params, 'salary:employer:vkb')
 
     super(params, 'salary:employee:ktg')
-    super(params.merge(:person_id => employee.id), "salary:bvg")
+    super(params.merge(:person_id => employee.id), "salary:employee:bvg")
 
-    super(params.merge(:person_id => employee.id), "salary:kz")
+    super(params.merge(:person_id => employee.id), "salary:employee:kz")
     super(params.merge(:person_id => employee.id), "salary:social:kz")
   end
 end
