@@ -1,7 +1,8 @@
 de:
   activerecord:
     models:
-      salary: Lohn
+      salary:                  Lohn
+      salary_booking_template: Lohnart
 
     attributes:
       salary:
@@ -11,6 +12,14 @@ de:
         social_amount: AHV/IV/EO/ALV/NBU
         employer:      Arbeitgeber
         employee:      Arbeitnehmer
+      salary_booking_template:
+        for_ahv:                 AHV/ALV
+        for_ktg:                 KTG
+        for_gross_income:        Bruttolohn
+        for_uvg:                 UVG
+        for_uvgz:                UVGZ
+        salary_declaration_code: Lohnausweis
+        for_deduction_at_source: Quellensteuer
 
   salaries:
     select_employee:

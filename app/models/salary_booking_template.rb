@@ -1,0 +1,2 @@
+class SalaryBookingTemplate < BookingTemplate
+end

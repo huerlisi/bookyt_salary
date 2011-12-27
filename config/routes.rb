@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
   # Salaries
+  resources :salary_booking_templates do
+    member do
+      get :copy
+    end
+  end
+
   resources :salaries do
     collection do
       get :select_employee
