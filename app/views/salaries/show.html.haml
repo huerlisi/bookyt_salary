@@ -20,6 +20,11 @@
       %th= t_attr(:duration_to, Invoice)
       %td= l(resource.duration_to) if resource.duration_to
 
+%h3= t('title.line_items')
+%table.list
+  = render resource.line_items
+  = render 'line_items/list_footer', :total_amount => resource.amount
+
 .contextual
   = form_tag new_direct_booking_path(:direct_booking => {:reference_id => resource.id, :reference_type => resource_class.base_class}), :method => :get, :remote => true do
     = collection_select :direct_booking, :booking_template_id, BookingTemplate.by_type(resource_class.name.underscore), :id, :title
