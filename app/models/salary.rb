@@ -75,6 +75,16 @@ class Salary < Invoice
     self.due_date   ||= date
   end
 
+  # Line Items
+  def build_line_items
+    template = SalaryTemplate.where(:person_id => employee.id).first
+    template.salary_booking_templates.each do |booking_template|
+      line_item = line_items.build(:date => self.value_date)
+      line_item.booking_template = booking_template
+    end
+  end
+
+
   # Filter/Search
   # =============
   scope :by_value_period, lambda {|from, to| where("date(value_date) BETWEEN ? AND ?", from, to) }
@@ -100,34 +110,5 @@ class Salary < Invoice
 
   def self.default_debit_account
     self.direct_account
-  end
-
-  # Bookings
-  # ========
-  def amount
-    employment.salary_amount if employment
-  end
-
-  # Build booking
-  #
-  # We need to ensure the order of creation as we depent on current balance.
-  def build_booking(params = {}, template_code = nil)
-    # Build and assign booking
-    super(params, 'salary:invoice')
-    super(params, 'salary:employee:ahv_iv_eo')
-    super(params, 'salary:employer:ahv_iv_eo')
-    super(params, 'salary:employee:alv')
-    super(params, 'salary:employer:alv')
-    super(params, 'salary:employee:nbu')
-    super(params, 'salary:employer:nbu')
-    super(params, 'salary:employer:bu')
-    super(params, 'salary:employer:fak')
-    super(params, 'salary:employer:vkb')
-
-    super(params, 'salary:employee:ktg')
-    super(params.merge(:person_id => employee.id), "salary:employee:bvg")
-
-    super(params.merge(:person_id => employee.id), "salary:employee:kz")
-    super(params.merge(:person_id => employee.id), "salary:social:kz")
   end
 end

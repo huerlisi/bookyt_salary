@@ -43,6 +43,9 @@ class SalariesController < InvoicesController
     @salary.title       = "Lohn #{month_name} #{@salary.duration_from.year} - #{@salary.employee.vcard.full_name}"
     @salary.duration_to = @salary.duration_from.end_of_month
 
+    # Prebuild line items
+    @salary.build_line_items
+
     # Prebuild an empty attachment instance
     @salary.attachments.build
 
