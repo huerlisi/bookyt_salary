@@ -91,7 +91,7 @@ class Salary < Invoice
   def build_line_items
     salary_template.salary_booking_templates.each do |booking_template|
       line_item = line_items.build(:date => self.value_date)
-      line_item.booking_template = booking_template
+      line_item.set_booking_template(booking_template)
     end
   end
 
