@@ -75,10 +75,21 @@ class Salary < Invoice
     self.due_date   ||= date
   end
 
+  # Get salary template
+  #
+  # Tries to get a personal salary template, falls back to templates with
+  # no assigned persons.
+  #
+  # If more than one template matches the criteria, it is unspecified which
+  # one will be returned.
+  def salary_template
+    template = SalaryTemplate.where(:person_id => employee.id).last
+    template ||= SalaryTemplate.where(:person_id => nil).last
+  end
+
   # Line Items
   def build_line_items
-    template = SalaryTemplate.where(:person_id => employee.id).first
-    template.salary_booking_templates.each do |booking_template|
+    salary_template.salary_booking_templates.each do |booking_template|
       line_item = line_items.build(:date => self.value_date)
       line_item.booking_template = booking_template
     end
