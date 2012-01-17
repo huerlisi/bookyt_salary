@@ -14,7 +14,7 @@
   %td= salary_booking_template.for_uvg
   %td= salary_booking_template.for_uvgz
   %td= salary_booking_template.for_deduction_at_source
-  %td= salary_booking_template.salary_declaration_code
+  %td.number= salary_booking_template.salary_declaration_code
   %td.action-links
     = list_link_for(:edit, salary_booking_template)
     = list_link_for(:delete, salary_booking_template)
