@@ -1,0 +1,13 @@
+= semantic_form_for @salary_template do |f|
+  = f.semantic_errors
+  = f.inputs do
+    .row
+      .span8= f.input :title, :input_html => {"data-autofocus" => true}
+      .span8= f.input :person
+    .row
+      .span16= f.input :salary_booking_template, :input_html => {:class => 'span12'}
+    .row
+      .span16= f.input :remarks, :input_html => {:rows => 2, :class => 'span12'}
+
+  = f.buttons do
+    = f.commit_button

@@ -9,6 +9,7 @@ module BookytSalary
         salaries.item :salary_statistics, t_title(:statistics, Salary), statistics_salaries_path
         salaries.item :divider, "", :class => 'divider'
         salaries.item :salary_booking_templates, t_title(:index, SalaryBookingTemplate), salary_booking_templates_path
+        salaries.item :salary_templates, t_title(:index, SalaryTemplate), salary_templates_path
       end
     end
   end

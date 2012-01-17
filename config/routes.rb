@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :salary_templates
+
   resources :salaries do
     collection do
       get :select_employee

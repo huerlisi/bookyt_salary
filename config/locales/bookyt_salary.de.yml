@@ -3,6 +3,7 @@ de:
     models:
       salary:                  Lohn
       salary_booking_template: Lohnart
+      salary_template:         Lohnvorlage
 
     attributes:
       salary:
@@ -21,6 +22,11 @@ de:
         obligation:              Pflichtigkeit
         salary_declaration_code: Lohnausweis
         for_deduction_at_source: Quellensteuer
+      salary_template:
+        person:                  Person
+        salary_booking_template: Lohnarten
+        title:                   Titel
+        remarks:                 Bemerkungen
 
   salaries:
     select_employee:
@@ -28,6 +34,9 @@ de:
   salary_booking_templates:
     index:
       title: Lohnarten
+  salary_templates:
+    index:
+      title: Lohnvorlagen
 
   bookyt:
     main_navigation:
