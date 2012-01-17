@@ -15,7 +15,3 @@
   %td= salary_booking_template.for_uvgz
   %td= salary_booking_template.for_deduction_at_source
   %td.number= salary_booking_template.salary_declaration_code
-  %td.action-links
-    = list_link_for(:edit, salary_booking_template)
-    = list_link_for(:delete, salary_booking_template)
-    = link_to image_tag('16x16/copy.png', :title => 'Copy'), copy_salary_booking_template_path(salary_booking_template)
