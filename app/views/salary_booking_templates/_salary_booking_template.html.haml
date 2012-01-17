@@ -1,6 +1,6 @@
 %tr[salary_booking_template]
   %td
-    = link_to "%s (%s)" % [salary_booking_template.title, salary_booking_template.code], salary_booking_template, 'data-href-container' => 'tr'
+    = link_to salary_booking_template.title, salary_booking_template, 'data-href-container' => 'tr'
     - if salary_booking_template.comments.present?
       %hr{:style => "height: 1px; margin: 0"}/
       %i= salary_booking_template.comments
