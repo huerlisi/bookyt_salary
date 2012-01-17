@@ -11,15 +11,7 @@
     .row
       .span16= f.input :remarks, :input_html => {:rows => 4, :class => 'span12'}
 
-  = f.inputs t('title.line_items') do
-    %table#line_items
-      %thead
-        = render 'line_items/list_header', :invoice => resource
-      %tbody
-        = f.fields_for :line_items do |line_item|
-          = render 'line_items/form', :line_item => line_item
-      %tfoot
-        = render 'line_items/list_footer', :total_amount => resource.amount
+  = render 'line_items/list_form', :f => f, :invoice => resource
 
   = f.buttons do
     = f.commit_button
