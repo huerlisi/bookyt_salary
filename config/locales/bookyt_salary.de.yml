@@ -13,11 +13,12 @@ de:
         employer:      Arbeitgeber
         employee:      Arbeitnehmer
       salary_booking_template:
-        for_ahv:                 AHV/ALV
-        for_ktg:                 KTG
+        for_ahv:                 AHV/ALV/IV/EO
+        for_ktg:                 Krankentaggeld-Versicherung (KTG)
         for_gross_income:        Bruttolohn
-        for_uvg:                 UVG
-        for_uvgz:                UVGZ
+        for_uvg:                 Unfall-Versicherung (UVG)
+        for_uvgz:                Unfallzusatz-Versicherung (UVGZ)
+        obligation:              Pflichtigkeit
         salary_declaration_code: Lohnausweis
         for_deduction_at_source: Quellensteuer
 
