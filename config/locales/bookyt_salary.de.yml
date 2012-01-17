@@ -23,10 +23,10 @@ de:
         salary_declaration_code: Lohnausweis
         for_deduction_at_source: Quellensteuer
       salary_template:
-        person:                  Person
-        salary_booking_template: Lohnarten
-        title:                   Titel
-        remarks:                 Bemerkungen
+        person:                   Person
+        salary_booking_templates: Lohnarten
+        title:                    Titel
+        remarks:                  Bemerkungen
 
   salaries:
     select_employee:
