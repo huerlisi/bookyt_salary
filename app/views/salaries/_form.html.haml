@@ -3,10 +3,13 @@
   = f.inputs do
     = f.input :employee_id, :as => :hidden
     = f.input :employer_id, :as => :hidden
-    = f.input :title
-    = f.input :duration_from, :as => :date_field
-    = f.input :duration_to, :as => :date_field
-    = f.input :remarks, :input_html => {:rows => 4}
+    .row
+      .span16= f.input :title, :input_html => {:class => 'span12'}
+    .row
+      .span8= f.input :duration_from, :as => :date_field
+      .span8= f.input :duration_to, :as => :date_field
+    .row
+      .span16= f.input :remarks, :input_html => {:rows => 4, :class => 'span12'}
 
   = f.inputs t('title.line_items') do
     %table#line_items
