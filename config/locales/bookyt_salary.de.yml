@@ -24,6 +24,9 @@ de:
   salaries:
     select_employee:
       title: Arbeitnehmer auswählen
+  salary_booking_templates:
+    index:
+      title: Lohnarten
 
   bookyt:
     main_navigation:
