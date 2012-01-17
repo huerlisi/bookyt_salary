@@ -37,12 +37,3 @@ de:
   salary_templates:
     index:
       title: Lohnvorlagen
-
-  bookyt:
-    main_navigation:
-      days:       Tagesabschlüsse
-      new_day:    Tagesabschluss
-
-      tooltip:
-        new_day:  Hier können Sie einen neuen Tagesabschluss gemäss Registrierkasse buchen
-        days:     Hier finden Sie eine Liste aller Tagesabschlüsse
