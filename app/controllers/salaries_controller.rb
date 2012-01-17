@@ -29,9 +29,11 @@ class SalariesController < InvoicesController
 
   def new
     @salary = Salary.new(params[:salary])
+    @salary.state = 'booked'
     @employee = @salary.employee
 
     unless @employee
+      # Trigger validation to flag bad values in select form
       @salary.valid?
 
       render :action => 'select_employee' and return
@@ -54,12 +56,9 @@ class SalariesController < InvoicesController
 
   def create
     @salary = Salary.new(params[:salary])
-    @salary.state = 'booked'
 
     # Set @employee in case we redisplay the form partial
     @employee = @salary.employee
-
-    @salary.build_booking
 
     create!
   end
