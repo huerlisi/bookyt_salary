@@ -108,7 +108,7 @@ class Salary < Invoice
   end
 
   def self.available_credit_accounts
-    Account.by_type(['costs', 'current_assets'])
+    Account.all
   end
 
   def self.default_credit_account
@@ -116,7 +116,7 @@ class Salary < Invoice
   end
 
   def self.available_debit_accounts
-    Account.by_type(['outside_capital'])
+    Account.all
   end
 
   def self.default_debit_account
