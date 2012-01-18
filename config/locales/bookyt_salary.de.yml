@@ -27,6 +27,10 @@ de:
         salary_booking_templates: Lohnarten
         title:                    Titel
         remarks:                  Bemerkungen
+      salary_item:
+        salary_booking_template:  Lohnart
+        times:         Anzahl
+        price:         Betrag
 
   salaries:
     select_employee:
@@ -37,3 +41,6 @@ de:
   salary_templates:
     index:
       title: Lohnvorlagen
+  salary_items:
+    list:
+      title: Lohnarten

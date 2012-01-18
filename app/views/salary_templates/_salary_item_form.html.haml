@@ -1,0 +1,3 @@
+= fields_for @salary_template do |salary_template|
+  = salary_template.fields_for :salary_items, @salary_item, :child_index => -(DateTime.now.to_i) do |salary_item|
+    = render 'salary_items/form', :salary_item => salary_item

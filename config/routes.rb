@@ -6,7 +6,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :salary_templates
+  resources :salary_templates do
+    member do
+      get :new_salary_item
+    end
+  end
 
   resources :salaries do
     collection do

@@ -89,9 +89,15 @@ class Salary < Invoice
 
   # Line Items
   def build_line_items
-    salary_template.salary_booking_templates.each do |booking_template|
+    salary_template.salary_items.each do |salary_item|
       line_item = line_items.build(:date => self.value_date)
-      line_item.set_booking_template(booking_template)
+
+      # Defaults from booking_template
+      line_item.set_booking_template(salary_item.salary_booking_template)
+
+      # Overrides from salary_item
+      line_item.times = salary_item.times if salary_item.times.present?
+      line_item.price = salary_item.price if salary_item.price.present?
     end
   end
 
