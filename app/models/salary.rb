@@ -96,8 +96,9 @@ class Salary < Invoice
       line_item.set_booking_template(salary_item.salary_booking_template)
 
       # Overrides from salary_item
-      line_item.times = salary_item.times if salary_item.times.present?
-      line_item.price = salary_item.price if salary_item.price.present?
+      line_item.times    = salary_item.times if salary_item.times.present?
+      line_item.price    = salary_item.price if salary_item.price.present?
+      line_item.position = salary_item.position if salary_item.position.present?
     end
   end
 
