@@ -4,8 +4,10 @@
   = f.semantic_errors
 
   = f.inputs do
-    = f.input :employee, :as => :combobox
-    = f.input :duration_from, :discard_day => true, :start_year => Time.now.year - 2, :end_year => Time.now.year + 1, :include_blank => false
+    .row
+      .span8= f.input :employee, :as => :combobox
+    .row
+      .span8= f.input :duration_from, :as => :date_field
 
   = f.buttons do
     = f.commit_button

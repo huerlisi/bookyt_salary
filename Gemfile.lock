@@ -2,6 +2,8 @@ PATH
   remote: .
   specs:
     bookyt_salary (0.5.0)
+      rails (~> 3.1.0)
+      recurrence
 
 GEM
   remote: http://rubygems.org/
@@ -97,8 +99,12 @@ GEM
       rdoc (~> 3.4)
       thor (~> 0.14.6)
     rake (0.9.2.2)
+    rcov (0.9.11)
     rdoc (3.12)
       json (~> 1.4)
+    recurrence (1.2.0)
+      activesupport (>= 2.3.0)
+      i18n
     rspec (2.7.0)
       rspec-core (~> 2.7.0)
       rspec-expectations (~> 2.7.0)
@@ -148,6 +154,7 @@ DEPENDENCIES
   capybara
   factory_girl_rails
   rails (~> 3.1.0)
+  rcov
   rspec-rails
   shoulda
   sqlite3

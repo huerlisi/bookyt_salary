@@ -75,6 +75,27 @@ class Salary < Invoice
     self.due_date   ||= date
   end
 
+  # Get salary template
+  #
+  # Tries to get a personal salary template, falls back to templates with
+  # no assigned persons.
+  #
+  # If more than one template matches the criteria, it is unspecified which
+  # one will be returned.
+  def salary_template
+    template = SalaryTemplate.where(:person_id => employee.id).last
+    template ||= SalaryTemplate.where(:person_id => nil).last
+  end
+
+  # Line Items
+  def build_line_items
+    salary_template.salary_booking_templates.each do |booking_template|
+      line_item = line_items.build(:date => self.value_date)
+      line_item.set_booking_template(booking_template)
+    end
+  end
+
+
   # Filter/Search
   # =============
   scope :by_value_period, lambda {|from, to| where("date(value_date) BETWEEN ? AND ?", from, to) }
@@ -87,7 +108,7 @@ class Salary < Invoice
   end
 
   def self.available_credit_accounts
-    Account.by_type(['costs', 'current_assets'])
+    Account.all
   end
 
   def self.default_credit_account
@@ -95,39 +116,10 @@ class Salary < Invoice
   end
 
   def self.available_debit_accounts
-    Account.by_type(['outside_capital'])
+    Account.all
   end
 
   def self.default_debit_account
     self.direct_account
-  end
-
-  # Bookings
-  # ========
-  def amount
-    employment.salary_amount if employment
-  end
-
-  # Build booking
-  #
-  # We need to ensure the order of creation as we depent on current balance.
-  def build_booking(params = {}, template_code = nil)
-    # Build and assign booking
-    super(params, 'salary:invoice')
-    super(params, 'salary:employee:ahv_iv_eo')
-    super(params, 'salary:employer:ahv_iv_eo')
-    super(params, 'salary:employee:alv')
-    super(params, 'salary:employer:alv')
-    super(params, 'salary:employee:nbu')
-    super(params, 'salary:employer:nbu')
-    super(params, 'salary:employer:bu')
-    super(params, 'salary:employer:fak')
-    super(params, 'salary:employer:vkb')
-
-    super(params, 'salary:employee:ktg')
-    super(params.merge(:person_id => employee.id), "salary:employee:bvg")
-
-    super(params.merge(:person_id => employee.id), "salary:employee:kz")
-    super(params.merge(:person_id => employee.id), "salary:social:kz")
   end
 end

@@ -29,9 +29,10 @@ class SalariesController < InvoicesController
 
   def new
     @salary = Salary.new(params[:salary])
-    @employee = @salary.employee
+    @salary.state = 'booked'
 
-    unless @employee
+    unless @salary.employee
+      # Trigger validation to flag bad values in select form
       @salary.valid?
 
       render :action => 'select_employee' and return
@@ -43,22 +44,13 @@ class SalariesController < InvoicesController
     @salary.title       = "Lohn #{month_name} #{@salary.duration_from.year} - #{@salary.employee.vcard.full_name}"
     @salary.duration_to = @salary.duration_from.end_of_month
 
+    # Prebuild line items
+    @salary.build_line_items
+
     # Prebuild an empty attachment instance
     @salary.attachments.build
 
     new!
-  end
-
-  def create
-    @salary = Salary.new(params[:salary])
-    @salary.state = 'booked'
-
-    # Set @employee in case we redisplay the form partial
-    @employee = @salary.employee
-
-    @salary.build_booking
-
-    create!
   end
 
   def payslip

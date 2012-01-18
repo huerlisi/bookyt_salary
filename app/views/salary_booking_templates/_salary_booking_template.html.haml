@@ -1,6 +1,6 @@
 %tr[salary_booking_template]
   %td
-    = link_to "%s (%s)" % [salary_booking_template.title, salary_booking_template.code], salary_booking_template
+    = link_to salary_booking_template.title, salary_booking_template, 'data-href-container' => 'tr'
     - if salary_booking_template.comments.present?
       %hr{:style => "height: 1px; margin: 0"}/
       %i= salary_booking_template.comments
@@ -14,8 +14,4 @@
   %td= salary_booking_template.for_uvg
   %td= salary_booking_template.for_uvgz
   %td= salary_booking_template.for_deduction_at_source
-  %td= salary_booking_template.salary_declaration_code
-  %td.action-links
-    = list_link_for(:edit, salary_booking_template)
-    = list_link_for(:delete, salary_booking_template)
-    = link_to image_tag('16x16/copy.png', :title => 'Copy'), copy_salary_booking_template_path(salary_booking_template)
+  %td.number= salary_booking_template.salary_declaration_code

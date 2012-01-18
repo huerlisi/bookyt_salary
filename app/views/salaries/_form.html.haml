@@ -3,20 +3,16 @@
   = f.inputs do
     = f.input :employee_id, :as => :hidden
     = f.input :employer_id, :as => :hidden
-    = f.input :title
-    = f.input :duration_from, :as => :date_field
-    = f.input :duration_to, :as => :date_field
-    = f.input :remarks, :input_html => {:rows => 4}
+    = f.input :state, :as => :hidden
+    .row
+      .span16= f.input :title, :input_html => {:class => 'span12'}
+    .row
+      .span8= f.input :duration_from, :as => :date_field
+      .span8= f.input :duration_to, :as => :date_field
+    .row
+      .span16= f.input :remarks, :input_html => {:rows => 4, :class => 'span12'}
 
-  = f.inputs t('title.line_items') do
-    %table#line_items
-      %thead
-        = render 'line_items/list_header', :invoice => resource
-      %tbody
-        = f.fields_for :line_items do |line_item|
-          = render 'line_items/form', :line_item => line_item
-      %tfoot
-        = render 'line_items/list_footer', :total_amount => resource.amount
+  = render 'line_items/list_form', :f => f, :invoice => resource
 
   = f.buttons do
     = f.commit_button

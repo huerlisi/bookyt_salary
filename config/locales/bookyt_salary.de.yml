@@ -3,6 +3,7 @@ de:
     models:
       salary:                  Lohn
       salary_booking_template: Lohnart
+      salary_template:         Lohnvorlage
 
     attributes:
       salary:
@@ -13,23 +14,26 @@ de:
         employer:      Arbeitgeber
         employee:      Arbeitnehmer
       salary_booking_template:
-        for_ahv:                 AHV/ALV
-        for_ktg:                 KTG
+        for_ahv:                 AHV/ALV/IV/EO
+        for_ktg:                 Krankentaggeld-Versicherung (KTG)
         for_gross_income:        Bruttolohn
-        for_uvg:                 UVG
-        for_uvgz:                UVGZ
+        for_uvg:                 Unfall-Versicherung (UVG)
+        for_uvgz:                Unfallzusatz-Versicherung (UVGZ)
+        obligation:              Pflichtigkeit
         salary_declaration_code: Lohnausweis
         for_deduction_at_source: Quellensteuer
+      salary_template:
+        person:                   Person
+        salary_booking_templates: Lohnarten
+        title:                    Titel
+        remarks:                  Bemerkungen
 
   salaries:
     select_employee:
       title: Arbeitnehmer auswählen
-
-  bookyt:
-    main_navigation:
-      days:       Tagesabschlüsse
-      new_day:    Tagesabschluss
-
-      tooltip:
-        new_day:  Hier können Sie einen neuen Tagesabschluss gemäss Registrierkasse buchen
-        days:     Hier finden Sie eine Liste aller Tagesabschlüsse
+  salary_booking_templates:
+    index:
+      title: Lohnarten
+  salary_templates:
+    index:
+      title: Lohnvorlagen

@@ -1,22 +1,23 @@
 = semantic_form_for @salary_booking_template do |f|
   = f.semantic_errors
   = f.inputs do
-    = f.input :title, :input_html => {"data-autofocus" => true}
-    = f.input :code, :input_html => {:style => 'width: 6em'}
-    = f.input :credit_account, :as => :combobox, :collection => accounts_as_collection
-    = f.input :debit_account, :as => :combobox, :collection => accounts_as_collection
-    = f.input :amount, :input_html => {:style => 'width: 6em'}
-    = f.input :amount_relates_to, :collection => amount_relations_as_collection
-    = f.input :comments, :input_html => {:rows => 5}
+    .row
+      .span8= f.input :title, :input_html => {"data-autofocus" => true}
+      .span8= f.input :code
+    .row
+      .span8= f.input :credit_account, :as => :combobox, :collection => accounts_as_collection
+      .span8= f.input :debit_account, :as => :combobox, :collection => accounts_as_collection
+    .row
+      .span8= f.input :amount
+      .span8= f.input :amount_relates_to, :collection => amount_relations_as_collection
+    .row
+      .span16= f.input :comments, :input_html => {:rows => 2, :class => 'span12'}
 
-  = f.inputs do
-    = f.input :for_ahv, :wrapper_html => {:class => 'col1'}
-    = f.input :for_ktg, :wrapper_html => {:class => 'col2'}
-    = f.input :for_uvg, :wrapper_html => {:class => 'col1'}
-    = f.input :for_uvgz, :wrapper_html => {:class => 'col2'}
-    = f.input :for_gross_income, :wrapper_html => {:class => 'col1'}
-    = f.input :for_deduction_at_source, :wrapper_html => {:class => 'col2'}
-    = f.input :salary_declaration_code, :wrapper_html => {:class => 'col1'}
+    .row
+      .span8= f.input :obligation, :as => :check_boxes, :collection => obligation_collection
+
+    .row
+      .span8= f.input :salary_declaration_code
 
   = f.buttons do
     = f.commit_button
