@@ -3,7 +3,7 @@
   = f.inputs do
     .row
       .span8= f.input :title, :input_html => {"data-autofocus" => true}
-      .span8= f.input :person
+      .span8= f.input :person, :collection => Employee.all
     .row
       .span16= f.input :salary_booking_templates, :input_html => {:class => 'span12'}
     .row
