@@ -3,7 +3,8 @@ class SalaryTemplatesController < AuthorizedController
     # Duplicate original record
     template = resource.dup
 
-    # Rebuild positions
+    # Rebuild salary items
+    template.salary_items = resource.salary_items.map{|salary_item| salary_item.dup}
     set_resource_ivar template
 
     render 'edit'
@@ -17,9 +18,7 @@ class SalaryTemplatesController < AuthorizedController
       @salary_template = resource_class.new
     end
 
-    @salary_item = @salary_template.salary_items.build(
-      :times          => 1
-    )
+    @salary_item = @salary_template.salary_items.build
 
     respond_with @salary_item
   end

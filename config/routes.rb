@@ -8,6 +8,10 @@ Rails.application.routes.draw do
 
   resources :salary_templates do
     member do
+      get :copy
+      get :new_salary_item
+    end
+    collection do
       get :new_salary_item
     end
   end

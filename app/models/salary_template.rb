@@ -4,4 +4,8 @@ class SalaryTemplate < ActiveRecord::Base
   # Salary Items
   has_many :salary_items
   accepts_nested_attributes_for :salary_items, :allow_destroy => true
+
+  def to_s
+    title
+  end
 end
