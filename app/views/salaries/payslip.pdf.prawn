@@ -1,4 +1,4 @@
-prawn_document(:filename => "#{resource.to_s}.pdf", :renderer => Prawn::LetterDocument) do |pdf|
+prawn_document(:filename => "#{resource.to_s}.pdf", :renderer => Prawn::Payslip) do |pdf|
   employer = resource.employer
   employee = resource.employee
   direct_account = Account.find_by_code("5000")
