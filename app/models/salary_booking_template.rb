@@ -17,4 +17,8 @@ class SalaryBookingTemplate < BookingTemplate
 
     result
   end
+
+  def to_s
+    title
+  end
 end
