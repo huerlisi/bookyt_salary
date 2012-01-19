@@ -3,4 +3,4 @@
 %h2= t_model SalaryTemplate
 
 - @salary_template = @employee.salary_templates.first
-= render 'salary_templates/form'
+= render 'salary_templates/form' if @salary_template
