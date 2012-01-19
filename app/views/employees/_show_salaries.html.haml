@@ -1,6 +1,6 @@
 .contextual
   = link_to t_action('new', Salary), select_employee_salaries_path(:salary => {:employee_id => @employee.id}), :class => "icon icon-add"
-%h2= t_title :index, Salary
+%h2= t_model SalaryTemplate
 
-- @salaries = @employee.salaries
-= render 'salaries/list'
+- @salary_template = @employee.salary_templates.first
+= render 'salary_templates/form'
