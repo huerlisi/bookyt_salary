@@ -5,12 +5,8 @@
     %th= t_attr :debit_account, SalaryBookingTemplate
     %th.currency= t_attr 'amount', SalaryBookingTemplate
     %th= t_attr :amount_relates_to, SalaryBookingTemplate
-    %th= t_attr :for_gross_income, SalaryBookingTemplate
-    %th= t_attr :for_ahv, SalaryBookingTemplate
-    %th= t_attr :for_ktg, SalaryBookingTemplate
-    %th= t_attr :for_uvg, SalaryBookingTemplate
-    %th= t_attr :for_uvgz, SalaryBookingTemplate
-    %th= t_attr :for_deduction_at_source, SalaryBookingTemplate
+    - SalaryBookingTemplate.saldo_inclusion_flags.each do |flag|
+      %th= t_attr('saldo_inclusion_flags.' + flag, SalaryBookingTemplate)
     %th= t_attr :salary_declaration_code, SalaryBookingTemplate
 
   = render @salary_booking_templates

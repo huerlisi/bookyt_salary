@@ -8,10 +8,6 @@
   %td= link_to salary_booking_template.debit_account.code, account_path(salary_booking_template.debit_account), :title => salary_booking_template.debit_account.title unless salary_booking_template.debit_account.nil?
   %td.currency= amount_to_s(salary_booking_template)
   %td= t(salary_booking_template.amount_relates_to, :scope => 'salary_booking_template.relation') if salary_booking_template.amount_relates_to.present?
-  %td= salary_booking_template.for_gross_income
-  %td= salary_booking_template.for_ahv
-  %td= salary_booking_template.for_ktg
-  %td= salary_booking_template.for_uvg
-  %td= salary_booking_template.for_uvgz
-  %td= salary_booking_template.for_deduction_at_source
+  - SalaryBookingTemplate.saldo_inclusion_flags.each do |flag|
+    %td= salary_booking_template.include_in_saldo_list.include? flag
   %td.number= salary_booking_template.salary_declaration_code

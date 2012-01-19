@@ -14,7 +14,7 @@
       .span16= f.input :comments, :input_html => {:rows => 2, :class => 'span12'}
 
     .row
-      .span8= f.input :obligation, :as => :check_boxes, :collection => obligation_collection
+      .span8= f.input :include_in_saldo_list, :as => :check_boxes, :collection => saldo_inclusion_flag_collection
 
     .row
       .span8= f.input :salary_declaration_code
