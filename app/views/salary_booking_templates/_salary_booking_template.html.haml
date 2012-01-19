@@ -6,8 +6,8 @@
       %i= salary_booking_template.comments
   %td= link_to salary_booking_template.credit_account.code, account_path(salary_booking_template.credit_account), :title => salary_booking_template.credit_account.title unless salary_booking_template.credit_account.nil?
   %td= link_to salary_booking_template.debit_account.code, account_path(salary_booking_template.debit_account), :title => salary_booking_template.debit_account.title unless salary_booking_template.debit_account.nil?
-  %td.currency= amount_to_s(salary_booking_template)
-  %td= t(salary_booking_template.amount_relates_to, :scope => 'salary_booking_template.relation') if salary_booking_template.amount_relates_to.present?
+  %td.currency= salary_booking_template.amount
+  %td= t_attr('saldo_inclusion_flags.' + salary_booking_template.amount_relates_to) if salary_booking_template.amount_relates_to.present?
   - SalaryBookingTemplate.saldo_inclusion_flags.each do |flag|
     %td= salary_booking_template.include_in_saldo_list.include? flag
   %td.number= salary_booking_template.salary_declaration_code
