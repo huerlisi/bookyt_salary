@@ -3,8 +3,8 @@ require 'rails'
 
 module BookytSalary
   class Railtie < Rails::Engine
-    config.autoload_paths << File.expand_path("../lib", __FILE__)
-
     engine_name "bookyt_salary"
+
+    config.autoload_paths << File.expand_path("../lib", __FILE__)
   end
 end
