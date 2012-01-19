@@ -1,7 +1,7 @@
 = f.inputs t_title(:list, SalaryItem) do
   %table#salary_items
     %thead
-      = render 'salary_items/list_header'
+      = render 'salary_items/list_header', :template => f.object
     %tbody
       = f.fields_for :salary_items do |salary_item|
-        = render 'salary_items/form', :salary_item => salary_item
+        = render 'salary_items/form', :salary_item => salary_item, :template => f.object
