@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    bookyt_salary (0.9.0)
-      rails (~> 3.1.0)
+    bookyt_salary (0.12.1)
+      rails (~> 3.1)
       recurrence
 
 GEM
