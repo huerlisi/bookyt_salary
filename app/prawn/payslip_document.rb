@@ -1,4 +1,4 @@
-class PayslipDocument
+class PayslipDocument < LetterDocument
   def salary_table(direct_balance, direct_account, direct_bookings)
     content = direct_bookings.inject([]) do |out, item|
       title = item.title if item
