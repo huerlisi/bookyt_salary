@@ -9,7 +9,7 @@
       .span8= f.input :debit_account, :as => :combobox, :collection => accounts_as_collection
     .row
       .span8= f.input :amount
-      .span8= f.input :amount_relates_to, :collection => saldo_inclusion_flag_collection
+      .span8= f.input :amount_relates_to
     .row
       .span16= f.input :comments, :input_html => {:rows => 2, :class => 'span12'}
 
