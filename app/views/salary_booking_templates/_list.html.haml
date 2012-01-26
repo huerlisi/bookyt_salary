@@ -1,5 +1,6 @@
 %table.list.salary_booking_template_list
   %tr
+    %th= t_attr :code, SalaryBookingTemplate
     %th= t_attr :title, SalaryBookingTemplate
     %th= t_attr :credit_account, SalaryBookingTemplate
     %th= t_attr :debit_account, SalaryBookingTemplate
@@ -7,6 +8,6 @@
     %th= t_attr :amount_relates_to, SalaryBookingTemplate
     - SalaryBookingTemplate.saldo_inclusion_flags.each do |flag|
       %th= t_attr('saldo_inclusion_flags.' + flag, SalaryBookingTemplate)
-    %th= t_attr :salary_declaration_code, SalaryBookingTemplate
+    %th.right= t_attr :salary_declaration_code, SalaryBookingTemplate
 
   = render @salary_booking_templates
