@@ -38,6 +38,8 @@ de:
       title: Arbeitnehmer auswählen
     new:
       title: Lohn erfassen
+    index:
+      title: Löhne
   salary_booking_templates:
     index:
       title: Lohnarten
