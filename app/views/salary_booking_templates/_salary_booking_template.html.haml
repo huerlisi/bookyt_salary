@@ -1,4 +1,5 @@
 %tr[salary_booking_template]
+  %td.code= salary_booking_template.code
   %td
     = link_to salary_booking_template.title, salary_booking_template, 'data-href-container' => 'tr'
     - if salary_booking_template.comments.present?
@@ -10,4 +11,4 @@
   %td= t_attr('saldo_inclusion_flags.' + salary_booking_template.amount_relates_to) if salary_booking_template.amount_relates_to.present?
   - SalaryBookingTemplate.saldo_inclusion_flags.each do |flag|
     %td= salary_booking_template.include_in_saldo_list.include?(flag) ? '<span class="label success">Ja</span>'.html_safe : ""
-  %td.number= salary_booking_template.salary_declaration_code
+  %td.right= salary_booking_template.salary_declaration_code
