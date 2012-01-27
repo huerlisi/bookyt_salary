@@ -2,6 +2,6 @@
   %table#salary_items
     %thead
       = render 'salary_items/list_header', :template => f.object
-    %tbody
+    %tbody.sortable
       = f.fields_for :salary_items do |salary_item|
         = render 'salary_items/form', :salary_item => salary_item, :template => f.object
