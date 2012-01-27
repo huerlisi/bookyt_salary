@@ -3,5 +3,4 @@
   %th{:style => 'padding: 2px'}= t_attr(:salary_booking_template, SalaryItem)
   %th{:style => 'padding: 2px; width: 3em'}= t_attr(:times, SalaryItem)
   %th{:style => 'padding: 2px; width: 3em'}= t_attr(:price, SalaryItem)
-  %th
   %th.action_links= link_to t_action(:more), [:new_salary_item, template.persisted? ? template : template.class.name.underscore.pluralize.to_sym], :remote => true, :class => 'icon-add-text'
