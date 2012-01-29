@@ -7,7 +7,7 @@
     %th.currency= t_attr 'amount', SalaryBookingTemplate
     %th= t_attr :amount_relates_to, SalaryBookingTemplate
     - SalaryBookingTemplate.saldo_inclusion_flags.each do |flag|
-      %th= t_attr('saldo_inclusion_flags.' + flag, SalaryBookingTemplate)
+      %th= t('activerecord.attributes.salary_booking_template.saldo_inclusion_flags.' + flag)
     %th.right= t_attr :salary_declaration_code, SalaryBookingTemplate
 
   = render @salary_booking_templates

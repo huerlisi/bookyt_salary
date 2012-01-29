@@ -15,11 +15,13 @@ de:
         employee:      Arbeitnehmer
       salary_booking_template:
         saldo_inclusion_flags:
-          ahv:                 AHV/ALV/IV/EO
-          ktg:                 Krankentaggeld-Versicherung (KTG)
+          ahv:                 AHV
+          ktg:                 KTG
           gross_income:        Bruttolohn
-          uvg:                 Unfall-Versicherung (UVG)
-          uvgz:                Unfallzusatz-Versicherung (UVGZ)
+          net_income:          Nettolohn
+          payment:             Auszahlung
+          uvg:                 UVG
+          uvgz:                UVGZ
           deduction_at_source: Quellensteuer
         include_in_saldo_list:   Pflichtigkeit
         salary_declaration_code: Lohnausweis
