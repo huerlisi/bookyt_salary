@@ -27,6 +27,7 @@ class PayslipDocument < LetterDocument
       cells.borders = []
       cells.padding_bottom = 2
       cells.padding_top = 2
+      columns(0).padding_left = 0
 
       # Columns
       columns(2..4).align = :right
@@ -34,7 +35,7 @@ class PayslipDocument < LetterDocument
       # Saldo styling
       saldo_rows.each do |index|
         row(index).font_style = :bold
-        row(index).padding_bottom = 8
+        row(index).padding_bottom = 10
       end
 
       # Header styling
