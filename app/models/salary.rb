@@ -39,29 +39,21 @@ class Salary < Invoice
 
   # Calculations
   def net_amount
-    salary_invoice_booking = bookings.where(:debit_account_id => Account.find_by_code('2050').id).first
-    return 0.0 unless salary_invoice_booking
+    # TODO: hardcoded salary_booking_template
+    line_item = line_items.where(:code => '6500').first
 
-    salary_invoice_booking.amount
+    return 0.0 unless line_item
+
+    line_item.accounted_amount
   end
 
-  def bvg_amount
-    bookings.by_text("BVG").sum(:amount)
-  end
+  def gross_amount
+    # TODO: hardcoded salary_booking_template
+    line_item = line_items.where(:code => '5000').first
 
-  def social_amount
-    result = bookings.by_text("AHV/IV/EO Arbeitnehmer").sum(:amount)
-    result += bookings.by_text("ALV Arbeitnehmer").sum(:amount)
-    result += bookings.by_text("NBU Arbeitnehmer").sum(:amount)
+    return 0.0 unless line_item
 
-    result
-  end
-
-  def ahv_amount
-    result = amount
-    result += bookings.where(:title => "Kinderzulage").sum(:amount)
-
-    result
+    line_item.accounted_amount
   end
 
   # Assignment proxies

@@ -7,10 +7,8 @@ de:
 
     attributes:
       salary:
-        amount:        Bruttolohn
+        gross_amount:  Bruttolohn
         net_amount:    Nettolohn
-        bvg_amount:    BVG
-        social_amount: AHV/IV/EO/ALV/NBU
         employer:      Arbeitgeber
         employee:      Arbeitnehmer
       salary_booking_template:
