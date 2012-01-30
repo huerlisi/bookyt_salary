@@ -5,6 +5,6 @@ class SalaryBookingTemplate < BookingTemplate
   end
 
   def to_s
-    title
+    "%s - %s" % [code, title]
   end
 end
