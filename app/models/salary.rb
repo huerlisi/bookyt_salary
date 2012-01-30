@@ -121,4 +121,10 @@ class Salary < Invoice
   def self.default_debit_account
     self.direct_account
   end
+
+  # bookyt_projects
+  def work_days
+    WorkDay.create_or_update_upto(employee, duration_to)
+    employee.work_days.where(:date => duration_from..duration_to)
+  end
 end

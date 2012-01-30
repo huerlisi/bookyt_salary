@@ -54,6 +54,12 @@ class SalariesController < InvoicesController
   end
 
   def payslip
+    @salary = Salary.find(params[:id])
+
+    @hours_due = @salary.work_days.sum(:hours_due)
+    @hours_worked = @salary.work_days.sum(:hours_worked)
+    @hours_saldo = @salary.work_days.last.overall_overtime
+
     show! do |format|
       format.html { redirect_to :action => :show }
     end
