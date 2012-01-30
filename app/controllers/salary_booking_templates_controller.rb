@@ -10,4 +10,15 @@ class SalaryBookingTemplatesController < BookingTemplatesController
 
     render 'edit'
   end
+
+  def statistics
+    if params['date']
+      date = Date.parse(params['date'])
+    else
+      date = Date.today
+    end
+
+    @duration = date.beginning_of_month..date.end_of_month
+    @salary_booking_templates = SalaryBookingTemplate.all
+  end
 end
