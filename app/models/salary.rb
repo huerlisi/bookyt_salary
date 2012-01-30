@@ -20,7 +20,7 @@ class Salary < Invoice
   end
       
   def employment
-    employee.employments.current
+    employee.employments.valid_at(value_date).last
   end
 
   # States
