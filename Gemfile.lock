@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    bookyt_salary (0.13.1)
+    bookyt_salary (0.15.0)
       rails (~> 3.1)
       recurrence
 
