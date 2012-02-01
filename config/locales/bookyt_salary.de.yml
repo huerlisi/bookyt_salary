@@ -12,15 +12,6 @@ de:
         employer:      Arbeitgeber
         employee:      Arbeitnehmer
       salary_booking_template:
-        saldo_inclusion_flags:
-          ahv:                 AHV
-          ktg:                 KTG
-          gross_income:        Bruttolohn
-          net_income:          Nettolohn
-          payment:             Auszahlung
-          uvg:                 UVG
-          uvgz:                UVGZ
-          deduction_at_source: Quellensteuer
         include_in_saldo_list:   Pflichtigkeit
         salary_declaration_code: Lohnausweis
       salary_template:

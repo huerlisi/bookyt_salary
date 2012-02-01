@@ -1,7 +1,7 @@
 class SalaryBookingTemplate < BookingTemplate
   # Obligation flags
   def self.saldo_inclusion_flags
-    ['gross_income', 'net_income', 'payment', 'ahv', 'uvg', 'uvgz', 'ktg', 'deduction_at_source']
+    SalaryBookingTemplate.tag_counts_on(:include_in_saldo).pluck(:name)
   end
 
   def to_s

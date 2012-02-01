@@ -1,6 +1,6 @@
 module SalaryBookingTemplateHelper
   def saldo_inclusion_flag_collection
-    SalaryBookingTemplate.saldo_inclusion_flags.map{|flag| [t('activerecord.attributes.salary_booking_template.saldo_inclusion_flags.' + flag), flag]}
+    SalaryBookingTemplate.saldo_inclusion_flags.map{|flag| [flag, flag]}
   end
 
   def amount_relates_to_collection
