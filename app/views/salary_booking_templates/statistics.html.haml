@@ -10,7 +10,7 @@
       %th.right= t_attr :amount
 
     - for template in @salary_booking_templates
-      - amount = template.line_items.where(:date => @duration).sum(&:total_amount)
+      - amount = template.line_items.where(:date => @duration).sum(&:accounted_amount)
       - next if amount == 0
       %tr
         %td= template.code
