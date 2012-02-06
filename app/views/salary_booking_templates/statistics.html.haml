@@ -10,10 +10,12 @@
       %th.right= t_attr :amount
 
     - for template in @salary_booking_templates
+      - amount = template.line_items.where(:date => @duration).sum(&:total_amount)
+      - next if amount == 0
       %tr
         %td= template.code
         %td= template.title
-        %td.currency= currency_fmt(template.line_items.where(:date => @duration).sum(&:total_amount))
+        %td.currency= currency_fmt(amount)
 
 - content_for :sidebar do
   .sub-tabs
