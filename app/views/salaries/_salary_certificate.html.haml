@@ -1,25 +1,36 @@
 %h3= t('salary_certificate')
 
-= paginated_section collection do
-  %table.list
-    %tr
-      %th= t_attr :company, Invoice
-      %th.currency= t_attr :gross_amount, Salary
-      %th.currency= t_attr :social_amount, Salary
-      %th.currency= t_attr :bvg_amount, Salary
-      %th.currency= t_attr :net_amount, Salary
+%table.list
+  %tr
+    %th= t_attr :ssn, Employee
+    %th= t_attr :date_of_birth, Employee
+    %th= t_attr :full_name, Employee
+    %th= t_attr :duration_from, Employment
+    %th= t_attr :duration_to, Employment
+    %th.currency AHV-Lohn
+    %th.currency ALV-Lohn
+    %th.currency ALVZ-Lohn
+    %th M/F
 
-    - for salary in @salaries
-      %tr
-        %td= salary.company
-        %td.currency= link_to currency_fmt(salary.ahv_amount), salary, "data-href-container" => 'tr'
-        %td.currency= currency_fmt(salary.social_amount)
-        %td.currency= currency_fmt(salary.bvg_amount)
-        %td.currency= currency_fmt(salary.net_amount)
-
+  - for employment in @employments
     %tr
-      %th= t('bookyt.total')
-      %th.currency= currency_fmt(@salaries.sum(&:ahv_amount))
-      %th.currency= currency_fmt(@salaries.sum(&:social_amount))
-      %th.currency= currency_fmt(@salaries.sum(&:bvg_amount))
-      %th.currency= currency_fmt(@salaries.sum(&:net_amount))
+      %td= employment.employee.ssn
+      %td= employment.employee.date_of_birth
+      %td= employment.employee.vcard.full_name
+      %td= employment.duration_from || @value_period.first
+      %td= employment.duration_to || @value_period.last
+      %td.currency= currency_fmt(employment.employee.salaries.where(:value_date => @value_period).sum(&:ahv_amount))
+      %td.currency= currency_fmt(employment.employee.salaries.where(:value_date => @value_period).sum(&:ahv_amount))
+      %td.currency= currency_fmt(0)
+      %td= employment.employee.sex_to_s
+
+  %tr
+    %th= t('bookyt.total')
+
+- content_for :sidebar do
+  .sub-tabs
+    %h3 Filter
+    %ul
+      - years = current_tenant.incorporated_on.year..Date.today.year
+      - for year in years
+        %li= link_to year, url_for(params.merge({:by_value_period => {:from => Date.new(year, 1, 1).to_s(:db), :to => Date.new(year, 12, 31).to_s(:db)}}))

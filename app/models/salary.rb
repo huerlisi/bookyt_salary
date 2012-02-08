@@ -38,22 +38,33 @@ class Salary < Invoice
   end
 
   # Calculations
-  def net_amount
-    # TODO: hardcoded salary_booking_template
-    line_item = line_items.where(:code => '6500').first
+  def amount_of(code)
+   if line_item = line_items.select{|item| item.code == code}.first
+      # Return the total_amount
+      return line_item.accounted_amount
+    else
+      # Sum over items to be included by tag
+      included = line_items.select{|item| item.include_in_saldo_list.include?(code) }
+      return included.sum(&:accounted_amount)
+    end
 
     return 0.0 unless line_item
 
     line_item.accounted_amount
   end
 
+  def ahv_amount
+    amount_of('AHV')
+  end
+
+  def net_amount
+    # TODO: hardcoded salary_booking_template
+    amount_of('6500')
+  end
+
   def gross_amount
     # TODO: hardcoded salary_booking_template
-    line_item = line_items.where(:code => '5000').first
-
-    return 0.0 unless line_item
-
-    line_item.accounted_amount
+    amount_of('5000')
   end
 
   # Assignment proxies
