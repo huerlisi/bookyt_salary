@@ -11,11 +11,6 @@ class SalariesController < InvoicesController
 
   # Actions
   # =======
-  def statistics
-    @value_period = Date.parse(current_scopes[:by_value_period][:from])..Date.parse(current_scopes[:by_value_period][:to])
-    @employments = Employment.valid_during(@value_period).all
-  end
-
   def select_employee
     # Allow pre-seeding some parameters
     salary_params = {

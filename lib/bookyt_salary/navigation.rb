@@ -7,7 +7,7 @@ module BookytSalary
         salaries.item :new_salary, t_title(:new, Salary), select_employee_salaries_path
         salaries.item :divider, "", :class => 'divider'
         salaries.item :salary_booking_template_statistics, t_title(:statistics, SalaryBookingTemplate), statistics_salary_booking_templates_path
-        salaries.item :ahv_statistics, "AHV Lohnbescheinigung", statistics_salaries_path
+        salaries.item :yearly_ahv_statement, "AHV Lohnbescheinigung", url_for("/salary_reports/yearly_ahv_statement")
         salaries.item :divider, "", :class => 'divider'
         salaries.item :salary_booking_templates, t_title(:index, SalaryBookingTemplate), salary_booking_templates_path
         salaries.item :salary_templates, t_title(:index, SalaryTemplate), salary_templates_path

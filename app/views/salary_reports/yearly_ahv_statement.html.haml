@@ -12,20 +12,28 @@
     %th.currency ALVZ-Lohn
     %th M/F
 
+  - ahv_total = 0
   - for employment in @employments
+    - ahv_amount = employment.employee.salaries.where(:value_date => @value_period).sum(&:ahv_amount)
+    - ahv_total += ahv_amount
     %tr
       %td= employment.employee.ssn
       %td= employment.employee.date_of_birth
       %td= employment.employee.vcard.full_name
-      %td= employment.duration_from || @value_period.first
-      %td= employment.duration_to || @value_period.last
-      %td.currency= currency_fmt(employment.employee.salaries.where(:value_date => @value_period).sum(&:ahv_amount))
-      %td.currency= currency_fmt(employment.employee.salaries.where(:value_date => @value_period).sum(&:ahv_amount))
+      %td= duration_from(employment, @value_period)
+      %td= duration_to(employment, @value_period)
+      %td.currency= currency_fmt(ahv_amount)
+      %td.currency= currency_fmt(ahv_amount)
       %td.currency= currency_fmt(0)
       %td= employment.employee.sex_to_s
 
   %tr
     %th= t('bookyt.total')
+    %th{:colspan => 4}
+    %th.currency= currency_fmt(ahv_total)
+    %th.currency= currency_fmt(ahv_total)
+    %th.currency= currency_fmt(0)
+    %th
 
 - content_for :sidebar do
   .sub-tabs

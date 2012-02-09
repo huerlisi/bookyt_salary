@@ -22,7 +22,6 @@ Rails.application.routes.draw do
   resources :salaries do
     collection do
       get :select_employee
-      get :statistics
     end
 
     member do
@@ -37,4 +36,6 @@ Rails.application.routes.draw do
       get :new_line_item
     end
   end
+
+   get 'salary_reports/:action', :controller => :salary_reports
 end
