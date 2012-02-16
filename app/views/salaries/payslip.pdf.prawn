@@ -6,7 +6,8 @@ prawn_document(:filename => "#{resource.to_s}.pdf", :renderer => PayslipDocument
   pdf.letter_header(employer, employee, resource.to_s)
   
   # Free text with the socical security number
-  
+  pdf.free_text(resource.text)
+
   # Line Items
   pdf.salary_table(resource)
 

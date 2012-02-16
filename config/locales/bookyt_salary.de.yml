@@ -11,6 +11,8 @@ de:
         net_amount:    Nettolohn
         employer:      Arbeitgeber
         employee:      Arbeitnehmer
+        text:          Text auf Lohnabrechnung
+
       salary_booking_template:
         include_in_saldo_list:   Pflichtigkeit
         salary_declaration_code: Lohnausweis
