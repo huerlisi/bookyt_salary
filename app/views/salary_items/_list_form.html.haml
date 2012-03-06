@@ -1,5 +1,5 @@
 = f.inputs t_title(:list, SalaryItem) do
-  %table#salary_items.nested-form-container
+  %table.zebra-striped.nested-form-container.collection
     %thead
       = render 'salary_items/list_header', :template => f.object
     %tbody.sortable

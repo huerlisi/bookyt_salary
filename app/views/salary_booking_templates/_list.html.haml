@@ -1,13 +1,14 @@
-%table.list.salary_booking_template_list
-  %tr
-    %th= t_attr :code, SalaryBookingTemplate
-    %th= t_attr :title, SalaryBookingTemplate
-    %th= t_attr :credit_account, SalaryBookingTemplate
-    %th= t_attr :debit_account, SalaryBookingTemplate
-    %th.currency= t_attr 'amount', SalaryBookingTemplate
-    %th= t_attr :amount_relates_to, SalaryBookingTemplate
-    - SalaryBookingTemplate.saldo_inclusion_flags.each do |flag|
-      %th= flag
-    %th.right= t_attr :salary_declaration_code, SalaryBookingTemplate
-
-  = render @salary_booking_templates
+%table.zebra-striped.salary_booking_templates.collection
+  %thead
+    %tr
+      %th= t_attr :code, SalaryBookingTemplate
+      %th= t_attr :title, SalaryBookingTemplate
+      %th= t_attr :credit_account, SalaryBookingTemplate
+      %th= t_attr :debit_account, SalaryBookingTemplate
+      %th.currency= t_attr 'amount', SalaryBookingTemplate
+      %th= t_attr :amount_relates_to, SalaryBookingTemplate
+      - SalaryBookingTemplate.saldo_inclusion_flags.each do |flag|
+        %th= flag
+      %th.right= t_attr :salary_declaration_code, SalaryBookingTemplate
+  %tbody
+    = render @salary_booking_templates
