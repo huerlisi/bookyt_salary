@@ -43,3 +43,12 @@ de:
   salary_items:
     list:
       title: Lohnarten
+  salary_reports:
+    yearly_ahv_statement:
+      title: AHV Lohnbescheinigung
+
+  overview:
+    bookyt:
+      overview:
+        title:
+          title: Übersicht
