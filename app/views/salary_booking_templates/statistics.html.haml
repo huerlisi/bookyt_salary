@@ -1,26 +1,25 @@
 = contextual_links
 
-.page-header
-  %h1= t_title
+= boot_page_title
 
-  %table.zebra-striped.collection
-    %thead
+%table.zebra-striped.collection
+  %thead
+    %tr
+      %th= t_attr :code
+      %th= t_attr :title
+      %th.right= t_attr :amount
+  %tbody
+    - for template in @salary_booking_templates
+      - amount = template.line_items.where(:date => @duration).sum(&:accounted_amount)
+      - next if amount == 0
       %tr
-        %th= t_attr :code
-        %th= t_attr :title
-        %th.right= t_attr :amount
-    %tbody
-      - for template in @salary_booking_templates
-        - amount = template.line_items.where(:date => @duration).sum(&:accounted_amount)
-        - next if amount == 0
-        %tr
-          %td= template.code
-          %td= template.title
-          %td.currency= currency_fmt(amount)
+        %td= template.code
+        %td= template.title
+        %td.currency= currency_fmt(amount)
 
 - content_for :sidebar do
   .sub-tabs
-    %ul
+    %ul.pager
       - for month in 1..12
         - date = Date.new(Date.today.year, month, 1)
         %li= link_to t('date.month_names')[date.month], url_for(:date => date.to_s(:db))
