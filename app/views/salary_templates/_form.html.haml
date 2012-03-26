@@ -2,10 +2,10 @@
   = f.semantic_errors
   = f.inputs do
     .row
-      .span8= f.input :title, :input_html => {"data-autofocus" => true}
-      .span8= f.input :person, :as => :combobox, :collection => Employee.all
+      .span6= f.input :title, :input_html => {"data-autofocus" => true}
+      .span6= f.input :person, :as => :combobox, :collection => Employee.all
     .row
-      .span16= f.input :remarks, :input_html => {:rows => 2, :class => 'span12'}
+      .span12= f.input :remarks, :input_html => {:rows => 2, :class => 'span12'}
 
   = render 'salary_items/list_form', :f => f
 

@@ -2,22 +2,22 @@
   = f.semantic_errors
   = f.inputs do
     .row
-      .span8= f.input :title, :input_html => {"data-autofocus" => true}
-      .span8= f.input :code
+      .span6= f.input :title, :input_html => {"data-autofocus" => true}
+      .span6= f.input :code
     .row
-      .span8= f.input :credit_account, :as => :combobox, :collection => accounts_as_collection
-      .span8= f.input :debit_account, :as => :combobox, :collection => accounts_as_collection
+      .span6= f.input :credit_account, :as => :combobox, :collection => accounts_as_collection
+      .span6= f.input :debit_account, :as => :combobox, :collection => accounts_as_collection
     .row
-      .span8= f.input :amount
-      .span8= f.input :amount_relates_to, :collection => amount_relates_to_collection
+      .span6= f.input :amount
+      .span6= f.input :amount_relates_to, :collection => amount_relates_to_collection
     .row
-      .span16= f.input :comments, :input_html => {:rows => 2, :class => 'span12'}
+      .span12= f.input :comments, :input_html => {:rows => 2, :class => 'span12'}
 
     .row
-      .span16= f.input :include_in_saldo_list, :input_html => {:class => 'span12'}
+      .span12= f.input :include_in_saldo_list, :input_html => {:class => 'span12'}
 
     .row
-      .span8= f.input :salary_declaration_code
+      .span6= f.input :salary_declaration_code
 
   = f.buttons do
     = f.commit_button
