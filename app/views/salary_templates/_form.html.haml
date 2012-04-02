@@ -1,11 +1,11 @@
 = semantic_form_for @salary_template do |f|
   = f.semantic_errors
   = f.inputs do
-    .row
-      .span6= f.input :title, :input_html => {"data-autofocus" => true}
-      .span6= f.input :person, :as => :combobox, :collection => Employee.all
-    .row
-      .span12= f.input :remarks, :input_html => {:rows => 2, :class => 'span12'}
+    .row-fluid
+      .span5= f.input :title, :input_html => {"data-autofocus" => true}
+      .span5= f.input :person, :as => :combobox, :collection => Employee.all
+    .row-fluid
+      .span10= f.input :remarks, :input_html => {:rows => 2, :class => 'span10'}
 
   = render 'salary_items/list_form', :f => f
 

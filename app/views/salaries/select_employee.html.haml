@@ -4,10 +4,10 @@
   = f.semantic_errors
 
   = f.inputs do
-    .row
-      .span6= f.input :employee, :as => :combobox
-    .row
-      .span6= f.input :duration_from, :as => :date_field
+    .row-fluid
+      .span5= f.input :employee, :as => :combobox
+    .row-fluid
+      .span5= f.input :duration_from, :as => :date_field
 
   = f.buttons do
     = f.commit_button
