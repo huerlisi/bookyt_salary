@@ -5,13 +5,13 @@
     = f.input :employer_id, :as => :hidden
     = f.input :state, :as => :hidden
     .row-fluid
-      .span10= f.input :title, :input_html => {:class => 'span10'}
+      .span12= f.input :title, :input_html => {:class => 'span12'}
     .row-fluid
-      .span5= f.input :duration_from, :as => :date_field
-      .span5= f.input :duration_to, :as => :date_field
+      .span6= f.input :duration_from, :as => :date_field
+      .span6= f.input :duration_to, :as => :date_field
     .row-fluid
-      .span10= f.input :text, :input_html => {:rows => 4, :class => 'span10'}
-      .span10= f.input :remarks, :input_html => {:rows => 4, :class => 'span10'}
+      .span12= f.input :text, :input_html => {:rows => 4, :class => 'span12'}
+      .span12= f.input :remarks, :input_html => {:rows => 4, :class => 'span12'}
 
   = render 'line_items/list_form', :f => f, :invoice => resource
 
