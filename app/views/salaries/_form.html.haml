@@ -1,19 +1,16 @@
-= semantic_form_for @salary do |f|
-  = f.semantic_errors
-  = f.inputs do
-    = f.input :employee_id, :as => :hidden
-    = f.input :employer_id, :as => :hidden
-    = f.input :state, :as => :hidden
-    .row-fluid
-      .span12= f.input :title, :input_html => {:class => 'span12'}
-    .row-fluid
-      .span6= f.input :duration_from, :as => :date_field
-      .span6= f.input :duration_to, :as => :date_field
-    .row-fluid
-      .span12= f.input :text, :input_html => {:rows => 4, :class => 'span12'}
-      .span12= f.input :remarks, :input_html => {:rows => 4, :class => 'span12'}
+= simple_form_for @salary do |f|
+  = f.input :employee_id, :as => :hidden
+  = f.input :employer_id, :as => :hidden
+  = f.input :state, :as => :hidden
+  .row-fluid
+    .span12= f.input :title
+  .row-fluid
+    .span6= f.input :duration_from, :as => :date_field
+    .span6= f.input :duration_to, :as => :date_field
+  .row-fluid
+    .span12= f.input :text, :input_html => {:rows => 4}
+    .span12= f.input :remarks, :input_html => {:rows => 4}
 
   = render 'line_items/list_form', :f => f, :invoice => resource
 
-  = f.buttons do
-    = f.commit_button
+  = f.button :submit

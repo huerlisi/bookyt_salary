@@ -1,13 +1,9 @@
 = boot_page_title
 
-= semantic_form_for @salary, :url => new_salary_path, :method => :get do |f|
-  = f.semantic_errors
+= simple_form_for @salary, :url => new_salary_path, :method => :get do |f|
+  .row-fluid
+    .span6= f.input :employee, :as => :combobox
+  .row-fluid
+    .span6= f.input :duration_from, :as => :date_field
 
-  = f.inputs do
-    .row-fluid
-      .span6= f.input :employee, :as => :combobox
-    .row-fluid
-      .span6= f.input :duration_from, :as => :date_field
-
-  = f.buttons do
-    = f.commit_button
+  = f.button :submit

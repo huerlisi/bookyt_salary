@@ -1,23 +1,20 @@
-= semantic_form_for @salary_booking_template do |f|
-  = f.semantic_errors
-  = f.inputs do
-    .row-fluid
-      .span6= f.input :title, :input_html => {"data-autofocus" => true}
-      .span6= f.input :code
-    .row-fluid
-      .span6= f.input :credit_account, :as => :combobox, :collection => accounts_as_collection
-      .span6= f.input :debit_account, :as => :combobox, :collection => accounts_as_collection
-    .row-fluid
-      .span6= f.input :amount
-      .span6= f.input :amount_relates_to, :collection => amount_relates_to_collection
-    .row-fluid
-      .span12= f.input :comments, :input_html => {:rows => 2, :class => 'span12'}
+= simple_form_for @salary_booking_template do |f|
+  .row-fluid
+    .span6= f.input :title, :input_html => {"data-autofocus" => true}
+    .span6= f.input :code
+  .row-fluid
+    .span6= f.input :credit_account, :as => :combobox, :collection => accounts_as_collection
+    .span6= f.input :debit_account, :as => :combobox, :collection => accounts_as_collection
+  .row-fluid
+    .span6= f.input :amount
+    .span6= f.input :amount_relates_to, :collection => amount_relates_to_collection
+  .row-fluid
+    .span12= f.input :comments, :input_html => {:rows => 2}
 
-    .row-fluid
-      .span12= f.input :include_in_saldo_list, :input_html => {:class => 'span12'}
+  .row-fluid
+    .span12= f.input :include_in_saldo_list
 
-    .row-fluid
-      .span6= f.input :salary_declaration_code
+  .row-fluid
+    .span6= f.input :salary_declaration_code
 
-  = f.buttons do
-    = f.commit_button
+  = f.button :submit

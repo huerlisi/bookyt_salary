@@ -1,7 +1,7 @@
-= f.inputs t_title(:list, SalaryItem) do
-  %table.table.table-striped.salary_items.collection.nested-form-container
-    %thead
-      = render 'salary_items/list_header', :template => f.object
-    %tbody.sortable
-      = f.fields_for :salary_items do |salary_item|
-        = render 'salary_items/form', :salary_item => salary_item, :template => f.object
+%h3= t_title(:list, SalaryItem)
+%table.table.table-striped.salary_items.collection.nested-form-container
+  %thead
+    = render 'salary_items/list_header', :template => f.object
+  %tbody.sortable
+    = f.fields_for :salary_items do |salary_item|
+      = render 'salary_items/form', :salary_item => salary_item, :template => f.object
