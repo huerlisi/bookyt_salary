@@ -3,8 +3,8 @@
     .span6= f.input :title, :input_html => {"data-autofocus" => true}
     .span6= f.input :code
   .row-fluid
-    .span6= f.input :credit_account, :as => :combobox, :collection => accounts_as_collection
-    .span6= f.input :debit_account, :as => :combobox, :collection => accounts_as_collection
+    .span6= f.association :credit_account, :as => :combobox, :collection => accounts_as_collection
+    .span6= f.association :debit_account, :as => :combobox, :collection => accounts_as_collection
   .row-fluid
     .span6= f.input :amount
     .span6= f.input :amount_relates_to, :collection => amount_relates_to_collection
@@ -15,6 +15,6 @@
     .span12= f.input :include_in_saldo_list
 
   .row-fluid
-    .span6= f.input :salary_declaration_code
+    .span12= f.input :salary_declaration_code
 
   = f.button :submit

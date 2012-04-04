@@ -9,6 +9,7 @@
     .span6= f.input :duration_to, :as => :date_field
   .row-fluid
     .span12= f.input :text, :input_html => {:rows => 4}
+  .row-fluid
     .span12= f.input :remarks, :input_html => {:rows => 4}
 
   = render 'line_items/list_form', :f => f, :invoice => resource

@@ -2,8 +2,10 @@
 
 = simple_form_for @salary, :url => new_salary_path, :method => :get do |f|
   .row-fluid
-    .span6= f.input :employee, :as => :combobox
+    .span12
+      =f.association :employee, :as => :combobox
   .row-fluid
-    .span6= f.input :duration_from, :as => :date_field
+    .span12
+      = f.input :duration_from, :as => :date_field
 
   = f.button :submit
