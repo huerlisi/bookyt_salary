@@ -25,6 +25,8 @@ prawn_document(:filename => "#{resource.to_s}.pdf", :renderer => PayslipDocument
 
   unless resource.employment.hourly_paid
     pdf.move_down 20
+
+    top_y = pdf.y
     pdf.text "Stundenabrechnung", :style => :bold
 
     month_name          = t('date.month_names')[@salary.duration_from.month]
@@ -35,7 +37,7 @@ prawn_document(:filename => "#{resource.to_s}.pdf", :renderer => PayslipDocument
       ["Aktueller Stundensaldo", "%0.2f" % @hours_saldo],
     ]
 
-    pdf.table rows, :width => (pdf.bounds.width * 0.4) do
+    pdf.table rows, :width => 8.cm do
       cells.valign  = :top
       cells.borders = []
       cells.padding_bottom = 2
@@ -47,6 +49,33 @@ prawn_document(:filename => "#{resource.to_s}.pdf", :renderer => PayslipDocument
 
       rows(3).font_style = :bold
     end
+    bottom_y = pdf.y
+
+    pdf.y = top_y
+    pdf.indent 10.cm do
+      pdf.text "Ferienabrechnung", :style => :bold
+
+      month_name          = t('date.month_names')[@salary.duration_from.month]
+      rows = [
+        ["#{t_attr(:used_leave_days)} #{month_name}", "%0.1f" % resource.used_leave_days],
+        [t_attr(:leave_days_balance), "%0.1f" % resource.leave_days_balance],
+      ]
+
+      pdf.table rows, :width => 8.cm do
+        cells.valign  = :top
+        cells.borders = []
+        cells.padding_bottom = 2
+        cells.padding_top = 2
+
+        columns(0).padding_left = 0
+        columns(0).width = 5.cm
+        columns(1).align = :right
+
+        rows(3).font_style = :bold
+      end
+    end
+
+    pdf.y = bottom_y
   end
 
   # Free text with the socical security number

@@ -12,6 +12,8 @@ de:
         employer:      Arbeitgeber
         employee:      Arbeitnehmer
         text:          Text auf Lohnabrechnung
+        leave_days_balance: Restliche Ferientage
+        used_leave_days:    Bezogene Ferientage
 
       salary_booking_template:
         include_in_saldo_list:   Pflichtigkeit

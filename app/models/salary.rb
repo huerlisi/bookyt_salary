@@ -37,6 +37,11 @@ class Salary < Invoice
     end
   end
 
+  # Helpers
+  def previous
+    employee.salaries.order("duration_to DESC").where("duration_to < ?", duration_to).first
+  end
+
   # Calculations
   def ahv_amount
     amount_of('AHV')
