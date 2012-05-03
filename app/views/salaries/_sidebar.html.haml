@@ -1,4 +1,1 @@
-- filter_name = :invoice_state
-- params[filter_name] ||= 'all'
-- content_for :sidebar do
-  = boot_nav_filter(filter_name, ['all'] + Salary::STATES)
+= render 'filters/salary_state'
