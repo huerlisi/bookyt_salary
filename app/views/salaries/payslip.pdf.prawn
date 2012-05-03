@@ -27,10 +27,11 @@ prawn_document(:filename => "#{resource.to_s}.pdf", :renderer => PayslipDocument
     pdf.move_down 20
     pdf.text "Stundenabrechnung", :style => :bold
 
+    month_name          = t('date.month_names')[@salary.duration_from.month]
     rows = [
       ["Übertrag Vormonat", "%0.2f" % @hours_carry],
-      [t_attr(:hours_due, Activity), "%0.2f" % @hours_due],
-      [t_attr(:hours_worked, Activity), "%0.2f" % @hours_worked],
+      ["#{t_attr(:hours_due, Activity)} #{month_name}", "%0.2f" % @hours_due],
+      ["#{t_attr(:hours_worked, Activity)} #{month_name}", "%0.2f" % @hours_worked],
       ["Aktueller Stundensaldo", "%0.2f" % @hours_saldo],
     ]
 
