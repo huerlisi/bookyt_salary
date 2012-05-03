@@ -114,6 +114,15 @@ class Salary < Invoice
   end
 
   # bookyt_projects
+  def hours_carry
+    WorkDay.create_or_update_upto(employee, duration_to)
+    last_day = employee.work_days.where(:date => duration_from.ago(1.day)).last
+
+    return 0 unless last_day
+
+    return last_day.overall_overtime
+  end
+
   def work_days
     WorkDay.create_or_update_upto(employee, duration_to)
     employee.work_days.where(:date => duration_from..duration_to)
