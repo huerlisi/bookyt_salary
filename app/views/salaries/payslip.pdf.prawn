@@ -52,26 +52,28 @@ prawn_document(:filename => "#{resource.to_s}.pdf", :renderer => PayslipDocument
     bottom_y = pdf.y
 
     pdf.y = top_y
-    pdf.indent 10.cm do
-      pdf.text "Ferienabrechnung", :style => :bold
+    if resource.used_leave_days and resource.leave_days_balance
+      pdf.indent 10.cm do
+        pdf.text "Ferienabrechnung", :style => :bold
 
-      month_name          = t('date.month_names')[@salary.duration_from.month]
-      rows = [
-        ["#{t_attr(:used_leave_days)} #{month_name}", "%0.1f" % resource.used_leave_days],
-        [t_attr(:leave_days_balance), "%0.1f" % resource.leave_days_balance],
-      ]
+        month_name          = t('date.month_names')[@salary.duration_from.month]
+        rows = [
+          ["#{t_attr(:used_leave_days)} #{month_name}", "%0.1f" % resource.used_leave_days],
+          [t_attr(:leave_days_balance), "%0.1f" % resource.leave_days_balance],
+        ]
 
-      pdf.table rows, :width => 8.cm do
-        cells.valign  = :top
-        cells.borders = []
-        cells.padding_bottom = 2
-        cells.padding_top = 2
+        pdf.table rows, :width => 8.cm do
+          cells.valign  = :top
+          cells.borders = []
+          cells.padding_bottom = 2
+          cells.padding_top = 2
 
-        columns(0).padding_left = 0
-        columns(0).width = 5.cm
-        columns(1).align = :right
+          columns(0).padding_left = 0
+          columns(0).width = 5.cm
+          columns(1).align = :right
 
-        rows(3).font_style = :bold
+          rows(3).font_style = :bold
+        end
       end
     end
 
