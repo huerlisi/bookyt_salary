@@ -23,10 +23,11 @@ prawn_document(:filename => "#{resource.to_s}.pdf", :renderer => PayslipDocument
     columns(0).width = 5.cm
   end
 
-  unless resource.employment.hourly_paid
+  top_y = pdf.y
+  bottom_y = pdf.y
+  if @include_hours_table
     pdf.move_down 20
 
-    top_y = pdf.y
     pdf.text "Stundenabrechnung", :style => :bold
 
     month_name          = t('date.month_names')[@salary.duration_from.month]
@@ -50,35 +51,38 @@ prawn_document(:filename => "#{resource.to_s}.pdf", :renderer => PayslipDocument
       rows(3).font_style = :bold
     end
     bottom_y = pdf.y
-
     pdf.y = top_y
-    if resource.used_leave_days and resource.leave_days_balance
-      pdf.indent 10.cm do
-        pdf.text "Ferienabrechnung", :style => :bold
+  end
 
-        month_name          = t('date.month_names')[@salary.duration_from.month]
-        rows = [
-          ["#{t_attr(:used_leave_days)} #{month_name}", "%0.1f" % resource.used_leave_days],
-          [t_attr(:leave_days_balance), "%0.1f" % resource.leave_days_balance],
-        ]
+  if @include_leave_days_table
+    pdf.move_down 20
 
-        pdf.table rows, :width => 8.cm do
-          cells.valign  = :top
-          cells.borders = []
-          cells.padding_bottom = 2
-          cells.padding_top = 2
+    pdf.indent 10.cm do
+      pdf.text "Ferienabrechnung", :style => :bold
 
-          columns(0).padding_left = 0
-          columns(0).width = 5.cm
-          columns(1).align = :right
+      month_name          = t('date.month_names')[@salary.duration_from.month]
+      rows = [
+        ["#{t_attr(:used_leave_days)} #{month_name}", "%0.1f" % resource.used_leave_days],
+        [t_attr(:leave_days_balance), "%0.1f" % resource.leave_days_balance],
+      ]
 
-          rows(3).font_style = :bold
-        end
+      pdf.table rows, :width => 8.cm do
+        cells.valign  = :top
+        cells.borders = []
+        cells.padding_bottom = 2
+        cells.padding_top = 2
+
+        columns(0).padding_left = 0
+        columns(0).width = 5.cm
+        columns(1).align = :right
+
+        rows(3).font_style = :bold
       end
     end
-
-    pdf.y = bottom_y
+    bottom_y = pdf.y if pdf.y < bottom_y
   end
+
+  pdf.y = bottom_y
 
   # Free text with the socical security number
   pdf.free_text(resource.text)
