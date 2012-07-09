@@ -57,6 +57,11 @@ class Salary < Invoice
     amount_of('5000')
   end
 
+  def bvg_amount
+    # TODO: hardcoded salary_booking_template
+    amount_of('5050')
+  end
+
   # Assignment proxies
   def duration_from=(value)
     write_attribute(:duration_from, value)
