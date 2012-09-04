@@ -55,21 +55,16 @@ class SalariesController < InvoicesController
   def payslip
     @salary = Salary.find(params[:id])
 
-    @include_hours_table = !@salary.employment.hourly_paid
-    @include_leave_days_table = !@salary.employment.hourly_paid && @salary.used_leave_days && @salary.leave_days_balance
+    @include_hours_table = @salary.track_hours?
+    @include_leave_days_table = @salary.track_leave_days?
 
     if @include_hours_table
       @hours_carry = @salary.hours_carry
-      work_days = @salary.work_days
 
-      if work_days.present?
-        @hours_due = @salary.work_days.sum(:hours_due)
-        @hours_worked = @salary.work_days.sum(:hours_worked)
-        @hours_saldo = @salary.work_days.last.overall_overtime
-      else
-        # Don't show hours table if no work days are recorded
-        @include_hours_table = false
-      end
+      work_days = @salary.work_days
+      @hours_due = work_days.sum(:hours_due)
+      @hours_worked = work_days.sum(:hours_worked)
+      @hours_saldo = work_days.last.overall_overtime
     end
 
     show! do |format|

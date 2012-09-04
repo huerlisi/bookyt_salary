@@ -10,9 +10,12 @@ prawn_document(:filename => "#{resource.to_s}.pdf", :renderer => PayslipDocument
 
   pdf.move_down 20
   rows = [
-    [t_attr(:social_security_nr, Employee), employee.social_security_nr],
-    [t_attr(:payment_to, Employment), resource.employment.payment_to]
+    [t_attr(:social_security_nr, Employee), employee.social_security_nr]
   ]
+  rows << [
+    [t_attr(:payment_to, Employment), resource.employment.payment_to]
+  ] if resource.employment
+
   pdf.table rows, :width => pdf.bounds.width do
     cells.valign  = :top
     cells.borders = []

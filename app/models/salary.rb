@@ -19,8 +19,38 @@ class Salary < Invoice
     company_id
   end
       
+  # Emplyoment helpers
   def employment
     employee.employments.valid_at(value_date).last
+  end
+
+  def hourly_paid?
+    employment.try(:hourly_paid?)
+  end
+
+  def track_hours?
+    # No tracking if we have no information how payment is done
+    return false if hourly_paid?.nil?
+
+    # No tracking if paid by hour
+    return false if hourly_paid?
+
+    # No tracking if we have no current information
+    return false unless work_days.present?
+  end
+
+  def track_leave_days?
+    # No tracking if we have no information how payment is done
+    return false if hourly_paid?.nil?
+
+    # No tracking if paid by hour
+    return false if hourly_paid?
+
+    # No tracking if we have no current information
+    return false unless used_leave_days && leave_days_balance
+
+    # Track otherwise
+    return true
   end
 
   # States
