@@ -12,6 +12,7 @@
       %th.currency ALV-Lohn
       %th.currency ALVZ-Lohn
       %th M/F
+      %th.action-links
   %tbody
     - ahv_total = 0
     - for employment in @employments
@@ -27,6 +28,7 @@
         %td.currency= currency_fmt(ahv_amount)
         %td.currency= currency_fmt(0)
         %td= employment.employee.sex_to_s
+        %td.action-links= link_to t_action(:salary_declaration), salary_declaration_path(:employee_id => employment.employee, :by_value_period => params[:by_value_period])
 
   %tfoot
     %tr
@@ -36,6 +38,7 @@
       %th.currency= currency_fmt(ahv_total)
       %th.currency= currency_fmt(0)
       %th
+      %th.action-links
 
 - content_for :sidebar do
   .sub-tabs

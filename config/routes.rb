@@ -38,4 +38,5 @@ Rails.application.routes.draw do
   end
 
    get 'salary_reports/:action', :controller => :salary_reports
+   get 'salary_reports/salary_declaration', :to => 'salary_reports#salary_declaration', :as => :salary_declaration
 end

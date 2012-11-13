@@ -48,9 +48,14 @@ de:
   salary_reports:
     yearly_ahv_statement:
       title: AHV Lohnbescheinigung
+    salary_declaration:
+      title: Lohnausweis
 
   overview:
     bookyt:
       overview:
         title:
           title: Übersicht
+  crud:
+    action:
+      salary_declaration: Lohnausweis
