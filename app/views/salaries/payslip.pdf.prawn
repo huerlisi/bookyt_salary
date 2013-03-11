@@ -1,10 +1,10 @@
 prawn_document(:filename => "#{resource.to_s}.pdf", :renderer => PayslipDocument) do |pdf|
   employer = resource.employer
   employee = resource.employee
-  
+
   # Letter header
   pdf.letter_header(employer, employee, resource.to_s)
-  
+
   # Line Items
   pdf.salary_table(resource)
 
@@ -12,7 +12,7 @@ prawn_document(:filename => "#{resource.to_s}.pdf", :renderer => PayslipDocument
   rows = [
     [t_attr(:social_security_nr, Employee), employee.social_security_nr]
   ]
-  rows << [
+  rows += [
     [t_attr(:payment_to, Employment), resource.employment.payment_to]
   ] if resource.employment
 
@@ -91,5 +91,5 @@ prawn_document(:filename => "#{resource.to_s}.pdf", :renderer => PayslipDocument
   pdf.free_text(resource.text)
 
   # Closing
-  pdf.common_closing(employer) 
+  pdf.common_closing(employer)
 end
