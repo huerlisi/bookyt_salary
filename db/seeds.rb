@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 # Salaries
 # ========
 outside_capital = AccountType.find_by_name('outside_capital')
