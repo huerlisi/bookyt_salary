@@ -1,3 +1,3 @@
 module BookytSalary
-  VERSION = '0.20.2'
+  VERSION = '0.20.3'
 end
