@@ -1,3 +1,7 @@
+0.20.4
+======
+* Use #accounts from bookings scope for tabs in salary view.
+
 0.20.3
 ======
 * Do not include current date in letter head for payslips.
