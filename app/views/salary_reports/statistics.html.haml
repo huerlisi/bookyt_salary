@@ -10,15 +10,11 @@
       %th.right= t_attr :amount, SalaryBookingTemplate
   %tbody
     - @salary_booking_templates.each do |template|
-      - amount = template.line_items.where(:date => @duration).sum(&:accounted_amount)
+      - amount = template.line_items.where(:date => @value_period).sum(&:accounted_amount)
       - next if amount == 0
       %tr
         %td= template.code
         %td= template.title
         %td.currency= currency_fmt(amount)
 
-- content_for :sidebar do
-  - filters = (1..12).map do |month|
-    - value = Date.new(Date.today.year, month, 1).to_s(:db)
-    - { :value => value, :title => t('date.month_names')[month] }
-  = boot_nav_filter(:date, filters)
+= render 'filters/by_calendar_year'
