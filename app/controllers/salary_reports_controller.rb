@@ -18,4 +18,15 @@ class SalaryReportsController < ApplicationController
     # TODO: better sorting
     @salary_declaration_codes = SalaryBookingTemplate.pluck(:salary_declaration_code).uniq.select{|code| code.present?}
   end
+
+  def statistics
+    if params['date']
+      date = Date.parse(params['date'])
+    else
+      date = Date.today
+    end
+
+    @duration = date.beginning_of_month..date.end_of_month
+    @salary_booking_templates = SalaryBookingTemplate.all
+  end
 end

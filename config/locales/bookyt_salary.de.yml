@@ -40,8 +40,6 @@ de:
   salary_booking_templates:
     index:
       title:      Lohnarten
-    statistics:
-      title:      Rekapitulation
   salary_templates:
     index:
       title: Lohnvorlagen
@@ -53,6 +51,8 @@ de:
       title: AHV Lohnbescheinigung
     salary_declaration:
       title: Lohnausweis
+    statistics:
+      title:      Rekapitulation
 
   overview:
     bookyt:

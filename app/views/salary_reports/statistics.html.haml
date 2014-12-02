@@ -5,9 +5,9 @@
 %table.table.table-bordered.table-striped.collection
   %thead
     %tr
-      %th= t_attr :code
-      %th= t_attr :title
-      %th.right= t_attr :amount
+      %th= t_attr :code, SalaryBookingTemplate
+      %th= t_attr :title, SalaryBookingTemplate
+      %th.right= t_attr :amount, SalaryBookingTemplate
   %tbody
     - @salary_booking_templates.each do |template|
       - amount = template.line_items.where(:date => @duration).sum(&:accounted_amount)

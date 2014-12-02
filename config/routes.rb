@@ -4,9 +4,6 @@ Rails.application.routes.draw do
     member do
       get :copy
     end
-    collection do
-      get :statistics
-    end
   end
 
   resources :salary_templates do
