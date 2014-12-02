@@ -40,7 +40,8 @@ de:
   salary_booking_templates:
     index:
       title:      Lohnarten
-      statistics: Rekapitulation
+    statistics:
+      title:      Rekapitulation
   salary_templates:
     index:
       title: Lohnvorlagen
