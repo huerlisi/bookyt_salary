@@ -40,10 +40,4 @@
       %th
       %th.action-links
 
-- content_for :sidebar do
-  .sub-tabs
-    %h3 Filter
-    %ul
-      - years = current_tenant.incorporated_on.year..Date.today.year
-      - for year in years
-        %li= link_to year, url_for(params.merge({:by_value_period => {:from => Date.new(year, 1, 1).to_s(:db), :to => Date.new(year, 12, 31).to_s(:db)}}))
+= render 'filters/by_calendar_year'
