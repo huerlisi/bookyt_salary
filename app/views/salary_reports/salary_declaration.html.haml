@@ -5,3 +5,5 @@
     %tr
       %th= code
       %td.currency= @line_items.select{|li| li.booking_template.salary_declaration_code == code}.sum(&:total_amount).floor
+
+= render 'filters/by_calendar_year'
