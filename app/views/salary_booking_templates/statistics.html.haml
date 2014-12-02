@@ -18,8 +18,7 @@
         %td.currency= currency_fmt(amount)
 
 - content_for :sidebar do
-  .sub-tabs
-    %ul.pager
-      - for month in 1..12
-        - date = Date.new(Date.today.year, month, 1)
-        %li= link_to t('date.month_names')[date.month], url_for(:date => date.to_s(:db))
+  - filters = (1..12).map do |month|
+    - value = Date.new(Date.today.year, month, 1).to_s(:db)
+    - { :value => value, :title => t('date.month_names')[month] }
+  = boot_nav_filter(:date, filters)
