@@ -18,6 +18,8 @@ de:
       salary_booking_template:
         include_in_saldo_list:   Pflichtigkeit
         salary_declaration_code: Lohnausweis
+        code:                    Lohnart
+        title:                   Buchungstext
       salary_template:
         person:                   Person
         salary_booking_templates: Lohnarten
