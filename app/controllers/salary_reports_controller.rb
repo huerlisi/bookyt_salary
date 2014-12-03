@@ -4,6 +4,10 @@ class SalaryReportsController < ApplicationController
   before_filter do
     @value_period = Date.parse(params[:by_value_period][:from] || Date.today.beginning_of_year)..Date.parse(params[:by_value_period][:to] || Date.today.end_of_year) if params[:by_value_period]
     @value_period ||= Date.today.beginning_of_year..Date.today.end_of_year
+
+    if employee_id = params[:by_employee]
+      @employee = Employee.find(employee_id)
+    end
   end
 
   def yearly_ahv_statement
@@ -11,7 +15,6 @@ class SalaryReportsController < ApplicationController
   end
 
   def salary_declaration
-    @employee = Employee.find(params[:employee_id])
     @salaries = @employee.salaries.where(:value_date => @value_period)
     @line_items = @salaries.collect{|salary| salary.line_items}.flatten
 
@@ -20,9 +23,6 @@ class SalaryReportsController < ApplicationController
   end
 
   def statistics
-    if employee_id = params[:by_employee]
-      @employee = Employee.find(employee_id)
-    end
     @year = @value_period.first.year
 
     @salary_booking_templates = SalaryBookingTemplate.all
