@@ -1,3 +1,17 @@
+0.21.0
+======
+* Use boot_nav_filter for salary statistics filter.
+* Do not use striping for salary item list form.
+* Better titles for statistics columns.
+* Fix title for salary statistics.
+* Use by_calendar_year filter in ahv statement.
+* Add year filter for salary declaration report.
+* translations in navigation for all reports.
+* Use year filter for salary statistics report.
+* Show detailed statistics for each month.
+* Add employee filter to statistics.
+* Add common employee filter to salary declarations.
+
 0.20.4
 ======
 * Use #accounts from bookings scope for tabs in salary view.
