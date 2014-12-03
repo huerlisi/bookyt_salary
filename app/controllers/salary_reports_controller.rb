@@ -20,6 +20,9 @@ class SalaryReportsController < ApplicationController
   end
 
   def statistics
+    if employee_id = params[:by_employee]
+      @employee = Employee.find(employee_id)
+    end
     @year = @value_period.first.year
 
     @salary_booking_templates = SalaryBookingTemplate.all
