@@ -20,6 +20,8 @@ class SalaryReportsController < ApplicationController
   end
 
   def statistics
+    @year = @value_period.first.year
+
     @salary_booking_templates = SalaryBookingTemplate.all
   end
 end

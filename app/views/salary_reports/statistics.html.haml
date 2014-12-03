@@ -7,14 +7,23 @@
     %tr
       %th= t_attr :code, SalaryBookingTemplate
       %th= t_attr :title, SalaryBookingTemplate
+      - (1..12).each do |month|
+        %th.currency= '%02i/%i' % [month, @year]
       %th.right= t_attr :amount, SalaryBookingTemplate
   %tbody
     - @salary_booking_templates.each do |template|
-      - amount = template.line_items.where(:date => @value_period).sum(&:accounted_amount)
-      - next if amount == 0
+      - line_items = template.line_items.where(:date => @value_period)
+      - total_amount = line_items.sum(&:accounted_amount)
+      - next if total_amount == 0
       %tr
         %td= template.code
         %td= template.title
-        %td.currency= currency_fmt(amount)
+        - (1..12).each do |month|
+          - duration_from = Date.new(@year, month, 1)
+          - duration_to = duration_from.end_of_month
+          - duration = duration_from..duration_to
+          - amount = line_items.where(:date => duration).sum(&:accounted_amount)
+          %td.currency= currency_fmt(amount)
+        %td.currency= currency_fmt(total_amount)
 
 = render 'filters/by_calendar_year'
