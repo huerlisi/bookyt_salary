@@ -6,3 +6,6 @@
 = paginated_section collection do
   - if collection.any?
     = render "list"
+
+= render 'filters/by_calendar_year'
+= render 'filters/by_employee'

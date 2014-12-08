@@ -18,7 +18,7 @@ class Salary < Invoice
   def employee_id
     company_id
   end
-      
+
   # Emplyoment helpers
   def employment
     employee.employments.valid_at(value_date).last
@@ -129,7 +129,7 @@ class Salary < Invoice
   # Filter/Search
   # =============
   scope :by_value_period, lambda {|from, to| where("date(value_date) BETWEEN ? AND ?", from, to) }
-  scope :by_employee_id, lambda {|value| where(:company_id => value)}
+  scope :by_employee, lambda {|value| where(:company_id => value)}
 
   # Accounts
   # ========
