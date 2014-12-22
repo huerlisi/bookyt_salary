@@ -1,3 +1,8 @@
+0.23.0 (unreleased)
+======
+* Add year and employee/tenant in salary statistics title.
+* Include year in ahv salary statement title.
+
 0.22.0
 ======
 * Add year and employee filter to salary index.
