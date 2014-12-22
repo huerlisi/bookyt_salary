@@ -1,6 +1,8 @@
 = contextual_links
 
-= boot_page_title
+- who = @employee ? @employee : current_tenant
+- title = [ t_title, @year.to_s, who.to_s].join(' - ')
+= boot_page_title title
 
 %table.table.table-striped.collection
   %thead
