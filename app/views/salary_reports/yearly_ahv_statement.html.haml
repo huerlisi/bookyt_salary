@@ -1,4 +1,5 @@
-= boot_page_title
+- title = [ t_title, @value_period.last.year ].presence.compact.join(' - ')
+= boot_page_title title
 
 %table.table.table-striped.collection
   %thead
