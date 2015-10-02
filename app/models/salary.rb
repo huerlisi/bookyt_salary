@@ -141,7 +141,7 @@ class Salary < Invoice
     Account.all
   end
 
-  def self.default_credit_account
+  def self.credit_account
     Account.find_by_code('5000')
   end
 
@@ -149,7 +149,7 @@ class Salary < Invoice
     Account.all
   end
 
-  def self.default_debit_account
+  def self.debit_account
     self.direct_account
   end
 
