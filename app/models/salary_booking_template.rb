@@ -1,4 +1,7 @@
 class SalaryBookingTemplate < BookingTemplate
+  # Access restrictions
+  attr_accessible :include_in_saldo_list, :salary_declaration_code
+
   # Obligation flags
   def self.saldo_inclusion_flags
     # Fix: Using .pluck(:name) would be nice but gives non-deterministic behaviour (id instead of name, sometimes)
