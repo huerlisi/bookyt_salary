@@ -1,9 +1,11 @@
 class SalaryReportsController < ApplicationController
   respond_to :html, :pdf
 
+  # Filter/Search
+  # =============
   before_filter do
-    @value_period = Date.parse(params[:by_value_period][:from] || Date.today.beginning_of_year)..Date.parse(params[:by_value_period][:to] || Date.today.end_of_year) if params[:by_value_period]
-    @value_period ||= Date.today.beginning_of_year..Date.today.end_of_year
+    @by_date = Date.parse(params[:by_date][:from] || Date.today.beginning_of_year)..Date.parse(params[:by_date][:to] || Date.today.end_of_year) if params[:by_date]
+    @by_date ||= Date.today.beginning_of_year..Date.today.end_of_year
 
     if employee_id = params[:by_employee]
       @employee = Employee.find(employee_id)
@@ -11,11 +13,11 @@ class SalaryReportsController < ApplicationController
   end
 
   def yearly_ahv_statement
-    @employments = Employment.valid_during(@value_period).all
+    @employments = Employment.valid_during(@by_date).all
   end
 
   def salary_declaration
-    @salaries = @employee.salaries.where(:value_date => @value_period)
+    @salaries = @employee.salaries.where(:value_date => @by_date)
     @line_items = @salaries.collect{|salary| salary.line_items}.flatten
 
     # TODO: better sorting
@@ -23,7 +25,7 @@ class SalaryReportsController < ApplicationController
   end
 
   def statistics
-    @year = @value_period.first.year
+    @year = @by_date.first.year
 
     @salary_booking_templates = SalaryBookingTemplate.all
   end

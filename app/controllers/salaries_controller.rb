@@ -5,8 +5,7 @@ class SalariesController < InvoicesController
 
   # Filter/Search
   # =============
-  has_scope :invoice_state, :default => nil
-  has_scope :by_value_period, :using => [:from, :to], :default => proc { |c| c.session[:has_scope] }
+  has_scope :by_date, :using => [:from, :to], :default => proc { |c| c.session[:has_scope] }
   has_scope :by_employee
 
   # Actions

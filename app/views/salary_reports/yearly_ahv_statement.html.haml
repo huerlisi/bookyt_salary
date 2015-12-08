@@ -1,4 +1,4 @@
-- title = [ t_title, @value_period.last.year ].presence.compact.join(' - ')
+- title = [ t_title, @by_date.last.year ].presence.compact.join(' - ')
 = boot_page_title title
 
 %table.table.table-striped.collection
@@ -17,19 +17,19 @@
   %tbody
     - ahv_total = 0
     - for employment in @employments
-      - ahv_amount = employment.employee.salaries.where(:value_date => @value_period).sum(&:ahv_amount)
+      - ahv_amount = employment.employee.salaries.where(:value_date => @by_date).sum(&:ahv_amount)
       - ahv_total += ahv_amount
       %tr
         %td= employment.employee.ssn
         %td= employment.employee.date_of_birth
         %td= employment.employee.vcard.full_name
-        %td= duration_from(employment, @value_period)
-        %td= duration_to(employment, @value_period)
+        %td= duration_from(employment, @by_date)
+        %td= duration_to(employment, @by_date)
         %td.currency= currency_fmt(ahv_amount)
         %td.currency= currency_fmt(ahv_amount)
         %td.currency= currency_fmt(0)
         %td= employment.employee.sex_to_s
-        %td.action-links= link_to t_action(:salary_declaration), salary_declaration_path(:by_employee => employment.employee, :by_value_period => params[:by_value_period])
+        %td.action-links= link_to t_action(:salary_declaration), salary_declaration_path(:by_employee => employment.employee, :by_date => params[:by_date])
 
   %tfoot
     %tr
