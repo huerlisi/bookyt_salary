@@ -8,8 +8,8 @@
     .span6= f.input :duration_from, :as => :date_field
     .span6= f.input :duration_to, :as => :date_field
   .row-fluid
-    .span6= f.input :used_leave_days, :as => :string
-    .span6= f.input :leave_days_balance, :as => :string
+    .span6= f.input :used_leave_days, :as => :string, :input_html => {:class => 'span2'}
+    .span6= f.input :leave_days_balance, :as => :string, :input_html => {:class => 'span2'}
   .row-fluid
     .span12= f.input :text, :input_html => {:rows => 4}
   .row-fluid
