@@ -3,4 +3,4 @@
 = boot_page_title t_model SalaryTemplate
 
 - @salary_template = @employee.salary_templates.first
-= render 'salary_templates/form' if @salary_template
+= render 'salary_templates/form', :resource => @salary_template if @salary_template

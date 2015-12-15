@@ -1,4 +1,4 @@
-= simple_form_for @salary_template do |f|
+= simple_form_for resource do |f|
   .row-fluid
     .span6= f.input :title, :input_html => {"data-autofocus" => true}
     .span6= f.association :person, :as => :combobox, :collection => Employee.all
@@ -7,4 +7,5 @@
 
   = render 'salary_items/list_form', :f => f
 
-  = f.button :submit
+  .form-actions
+    = f.button :submit

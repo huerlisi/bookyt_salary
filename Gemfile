@@ -1,12 +1,8 @@
 # Settings
 # ========
-source :rubygems
+source 'https://rubygems.org'
 
 gemspec
-
-# Rails
-# =====
-gem 'rails', '~> 3.1.0'
 
 # Development
 # ===========
@@ -19,9 +15,6 @@ group :test do
   # Framework
   gem "rspec-rails"
 
-  # Browser
-  gem "capybara"
-
   # Fixtures
   gem "factory_girl_rails"
 
@@ -29,13 +22,11 @@ group :test do
   gem 'shoulda'
   gem 'accept_values_for'
 
-  # Autotest
-  gem 'autotest'
-  gem 'autotest-rails'
-  gem 'ZenTest', '< 4.6.0' # Keep it working with gems < 1.8
-
   # Database
   gem "sqlite3"
+
+  # Browser
+  gem "capybara"
 end
 
 # Gem

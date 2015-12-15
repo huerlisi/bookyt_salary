@@ -14,7 +14,7 @@
       %th.right= t_attr :amount, SalaryBookingTemplate
   %tbody
     - @salary_booking_templates.each do |template|
-      - line_items = template.line_items.where(:date => @value_period)
+      - line_items = template.line_items.where(:date => @by_date)
       - line_items = line_items.includes(:invoice).where(invoices: {company_id: @employee.id}) if @employee
       - total_amount = line_items.sum(&:accounted_amount)
       - next if total_amount == 0
