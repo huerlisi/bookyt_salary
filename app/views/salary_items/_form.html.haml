@@ -1,8 +1,8 @@
-%tr.salary_item.nested-form-item
-  %td= salary_item.text_field :position, :required => true, :style => 'width: 3em', :autocomplete => "off"
-  %td= salary_item.select :salary_booking_template_id, SalaryBookingTemplate.all.map{|template| [template.title, template.id]}, {:include_blank => true, :required => true}, :class => 'combobox'
-  %td= salary_item.text_field :times, :required => true, :style => 'width: 3em', :autocomplete => "off"
-  %td= salary_item.text_field :price, :required => true, :style => 'width: 5em', :autocomplete => "off"
-  %td.action_links
+.row-fluid.nested-form-item.line_item[salary_item.object]
+  .span1= salary_item.text_field :position, :required => true, :autocomplete => "off"
+  .span7= salary_item.select :salary_booking_template_id, SalaryBookingTemplate.all.map{|template| [template.title, template.id]}, {:include_blank => true, :required => true}, :class => 'combobox'
+  .span1= salary_item.text_field :times, :required => true, :autocomplete => "off"
+  .span2.currency= salary_item.text_field :price, :required => true, :autocomplete => "off"
+  .span1.action_links
     = salary_item.hidden_field :_destroy
     = list_link_to :delete, '#', :class => 'delete-nested-form-item'

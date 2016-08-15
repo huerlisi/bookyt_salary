@@ -1,6 +1,5 @@
-%tr
-  %th{:style => 'padding: 2px; width: 3em'}= t_attr(:position, SalaryItem)
-  %th{:style => 'padding: 2px'}= t_attr(:salary_booking_template, SalaryItem)
-  %th{:style => 'padding: 2px; width: 3em'}= t_attr(:times, SalaryItem)
-  %th{:style => 'padding: 2px; width: 3em'}= t_attr(:price, SalaryItem)
-  %th.action_links= link_to t_action(:more), [:new_salary_item, template.persisted? ? template : template.class.name.underscore.pluralize.to_sym], :remote => true, :class => 'icon-add-text'
+.row-fluid.head
+  .span1= t_attr(:position, SalaryItem)
+  .span7= t_attr(:salary_booking_template, SalaryItem)
+  .span1= t_attr(:times, SalaryItem)
+  .span2.currency= t_attr(:price, SalaryItem)
