@@ -1,5 +1,28 @@
 # encoding: UTF-8
 
+# Salaries
+# ========
+outside_capital = AccountType.find_by_name('outside_capital')
+costs           = AccountType.find_by_name('costs')
+
+# Accounts
+Account.create!([
+  {:code => "2020", :title => "Kreditoren Sozialversicherungen", :account_type => outside_capital},
+  {:code => "2050", :title => "Offene Lohnforderungen", :account_type => outside_capital},
+  {:code => "5000", :title => "Lohnaufwand", :account_type => costs},
+  {:code => "5700", :title => "Sozialversicherungaufwand", :account_type => costs},
+  {:code => "5800", :title => "Übriger Personalaufwand", :account_type => costs},
+])
+
+# Booking Templates
+BookingTemplate.create!([
+  {:code => "salary:invoice", :title => "Monatslohn", :debit_account => Account.find_by_code("2050"), :credit_account => Account.find_by_code("5000"), :amount => 1, :amount_relates_to => 'reference_amount'},
+  {:code => "salary:cancel", :title => "Storno", :debit_account => Account.find_by_code("5000"), :credit_account => Account.find_by_code("2050"), :amount => 1, :amount_relates_to => 'reference_amount'},
+
+  {:code => "salary:cash_payment", :title => "Barzahlung Lohn", :debit_account => Account.find_by_code("1000"), :credit_account => Account.find_by_code("2050"), :amount => 1, :amount_relates_to => 'reference_balance'},
+  {:code => "salary:bank_payment", :title => "Bankzahlung Lohn", :debit_account => Account.find_by_code("1020"), :credit_account => Account.find_by_code("2050")},
+])
+
 # SalaryBookingTemplates
 SalaryBookingTemplate.create!([
   {:code => '1000', :title => 'Monatslohn', :debit_account => Account.find_by_code('2050'), :credit_account => Account.find_by_code('5000'), :salary_declaration_code => '1', :include_in_saldo_list => 'Bruttolohn, AHV, UVG, UVGZ, KTG, Quellensteuer, Nettolohn', :amount => '', :amount_relates_to => ''},
